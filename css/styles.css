@@ -1,0 +1,353 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    padding-top: 60px; /* Space for the fixed header */
+    padding-bottom: 60px; /* Space for the fixed footer */
+}
+
+/* Header and Navigation */
+.header {
+    background-color: #333;
+    padding: 1rem;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin-left: 1.5rem;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar .nav-links a:hover {
+    color: #f60;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Home Page (Hero Section) */
+.hero {
+    background: url('../images/bgimage.png') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    text-align: center;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+}
+
+.hero-content p {
+    margin: 1rem 0;
+}
+
+.hero-content {
+    display: none; /* Hide all text */
+}
+
+.cta-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #f60;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    margin-top: 420px;
+    position: relative;
+}
+
+.cta-button:hover {
+    background-color: #ff7f24;
+}
+
+/* Menu Page */
+.menu-section {
+    width: 70%;
+    padding: 2rem 0;
+    background-color: #fff;
+}
+
+.menu-section h2, .menu-category h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Table Styles for Menu */
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.menu-table tr {
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+}
+
+.menu-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+.menu-table td:nth-child(2) {
+    text-align: right;
+}
+
+.menu-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Image Styling for Menu Items */
+.menu-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+/* Cart Section (Menu Page) */
+.cart-section {
+    width: 25%;
+    padding: 2rem;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 120px); /* Adjust height for header and footer */
+    text-align: center;
+    flex-shrink: 0; /* Prevent the cart from shrinking */
+}
+
+#cart-items {
+    margin-bottom: 1rem;
+}
+
+#total-price {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#checkout-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+#checkout-btn:hover {
+    background-color: #555;
+}
+
+/* Contact Page */
+.contact-section {
+    padding: 2rem 0;
+    background-color: #fff;
+}
+
+.contact-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.contact-description {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.contact-form {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Reservation Page */
+.reservation-section {
+    padding: 2rem 0;
+    background-color: #fff;
+}
+
+.reservation-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.reservation-form {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Admin Page */
+.admin-section {
+    padding: 2rem 0;
+    background-color: #fff;
+}
+
+.admin-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.admin-form {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+button[type="submit"] {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Reviews Section */
+.reviews-section {
+    padding: 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.review {
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Main Content Layout (Menu and Cart Section Alignment) */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+    min-height: calc(100vh - 120px); /* Adjust for header and footer */
+    gap: 2rem; /* Gap between menu and cart sections */
+}

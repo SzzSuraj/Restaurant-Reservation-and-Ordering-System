@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Fusion Bistro - Reservation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Mountain Fusion Bistro</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Reservation Form -->
+    <section class="reservation-section">
+        <h2>Make a Reservation</h2>
+        <form action="#" method="POST" class="reservation-form">
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="full-name" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile-number">Mobile Number</label>
+                <input type="tel" id="mobile-number" name="mobile-number" required>
+            </div>
+            <div class="form-group">
+                <label for="number-people">Number of People</label>
+                <input type="number" id="number-people" name="number-people" required>
+            </div>
+            <div class="form-group">
+                <label for="reservation-date">Reservation Date</label>
+                <input type="date" id="reservation-date" name="reservation-date" required>
+            </div>
+            <div class="form-group">
+                <label for="reservation-time">Reservation Time</label>
+                <input type="time" id="reservation-time" name="reservation-time" required>
+            </div>
+            <div class="form-group">
+                <label for="table-number">Table Number</label>
+                <input type="number" id="table-number" name="table-number">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Mountain Fusion Bistro. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

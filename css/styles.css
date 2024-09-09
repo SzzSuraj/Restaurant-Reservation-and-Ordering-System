@@ -334,14 +334,151 @@ button[type="submit"]:hover {
 .reviews-section {
     padding: 2rem;
     background-color: #fff;
+    text-align: center; /* Ensure the heading is centered */
+}
+
+.reviews-section h2 {
+    margin-bottom: 2rem;
+    text-align: center; /* Center the main heading */
+}
+
+/* Flex container for Review Form and Top Reviews */
+.reviews-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem; /* Add space between form and reviews sections */
+}
+
+/* Reviews Section */
+.reviews-section {
+    padding: 2rem;
+    background-color: #fff;
+    text-align: center; /* Ensure the heading is centered */
+}
+
+.reviews-section h2 {
+    margin-bottom: 2rem;
+    text-align: center; /* Center the main heading */
+}
+
+/* Flex container for Review Form and Top Reviews */
+.reviews-container {
+    display: flex; /* Flexbox layout for side-by-side alignment */
+    justify-content: space-between; /* Ensure space between sections */
+    gap: 2rem; /* Add space between form and reviews sections */
+    align-items: flex-start; /* Align items at the top */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Reviews Section */
+.reviews-section {
+    width: 100%; /* Ensure it takes up full width */
+    padding: 2rem;
+    background-color: #fff;
+    text-align: center; /* Center the heading */
+}
+
+/* Center the heading */
+.reviews-section h2 {
+    margin-bottom: 2rem;
     text-align: center;
 }
 
-.review {
-    margin-bottom: 1.5rem;
-    font-style: italic;
-    font-size: 1.1rem;
+/* Flex container for Review Form and Top Reviews */
+.reviews-container {
+    display: flex;
+    justify-content: space-between; /* Ensure space between form and reviews */
+    align-items: flex-start; /* Align items at the top */
+    gap: 2rem; /* Space between sections */
+    max-width: 1200px; /* Optional: Limit the total width */
+    margin: 0 auto; /* Center the container */
 }
+
+/* Review Form Section */
+.review-form-section {
+    flex: 1; /* Equal space between sections */
+    max-width: 45%; /* Limit the width */
+}
+
+.review-form-section h3 {
+    margin-bottom: 1rem;
+}
+
+.review-form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.review-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.review-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.review-form input, 
+.review-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.review-form textarea {
+    resize: vertical;
+}
+
+.review-form button[type="submit"] {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.review-form button[type="submit"]:hover {
+    background-color: #555;
+}
+
+/* Latest Reviews Section */
+.top-reviews-section {
+    flex: 1; /* Equal space between sections */
+    max-width: 45%; /* Limit the width */
+}
+
+.top-reviews-section h3 {
+    margin-bottom: 1rem;
+}
+
+.review {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    max-width: 100%;
+    margin: 0.5rem auto;
+}
+
+.review-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.review-author {
+    font-size: 0.9rem;
+    text-align: right;
+    color: #555;
+}
+
 
 /* Main Content Layout (Menu and Cart Section Alignment) */
 .main-content {

@@ -27,19 +27,43 @@
     <!-- Reviews Section -->
     <section class="reviews-section">
         <h2>Customer Reviews</h2>
-        <div class="review">
-            <p>"Amazing experience! The food was delicious and the staff were super friendly." - Sarah M.</p>
+
+        <!-- Flex container for form and top reviews -->
+        <div class="reviews-container">
+        
+            <!-- Share Your Review Section -->
+            <div class="review-form-section">
+                <h3>Share Your Review</h3>
+                <form class="review-form">
+                    <div class="form-group">
+                        <label for="reviewer-name">Your Name</label>
+                        <input type="text" id="reviewer-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-message">Your Review</label>
+                        <textarea id="review-message" name="review" rows="5" required></textarea>
+                    </div>
+                    <button type="submit">Submit Review</button>
+                </form>
+            </div>
+
+            <!-- Top Reviews Section -->
+            <div class="top-reviews-section">
+                <h3>Top Reviews</h3>
+                <div class="review">
+                    <p class="review-text">"Amazing experience! The food was delicious and the staff were super friendly." - Sarah M.</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">"A delightful fusion of flavors. Highly recommend the mango lassi!" - John D.</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">"Beautiful atmosphere and top-notch service. Will definitely return." - Emily K.</p>
+                </div>
+                <div class="review">
+                    <p class="review-text">"Best bistro in town. The menu offers a great variety of beverages." - Mark T.</p>
+                </div>
+            </div>
         </div>
-        <div class="review">
-            <p>"A delightful fusion of flavors. Highly recommend the mango lassi!" - John D.</p>
-        </div>
-        <div class="review">
-            <p>"Beautiful atmosphere and top-notch service. Will definitely return." - Emily K.</p>
-        </div>
-        <div class="review">
-            <p>"Best bistro in town. The menu offers a great variety of beverages." - Mark T.</p>
-        </div>
-        <!-- Add more reviews here -->
     </section>
 
     <!-- Footer -->
@@ -47,5 +71,7 @@
         <p>© 2024 Mountain Fusion Bistro. All rights reserved.</p>
     </footer>
 
+    <!-- Optional: JavaScript for review form functionality -->
+    <script src="../js/script.js"></script>
 </body>
 </html>

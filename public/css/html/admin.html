@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Fusion Bistro - Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">Mountain Fusion Bistro</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Admin Login Section -->
+    <section class="admin-section">
+        <h2>Admin Login</h2>
+        <form action="/admin/login" method="POST" class="admin-form">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Sign In</button>
+          </form>          
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Mountain Fusion Bistro. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

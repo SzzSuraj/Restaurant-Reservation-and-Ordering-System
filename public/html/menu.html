@@ -12,220 +12,110 @@
     <header class="header">
         <nav class="navbar">
             <div class="logo">
-                <a href="index.html">Mountain Fusion Bistro</a>
+                <a href="index.html">
+                    <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
+                </a>
             </div>
             <ul class="nav-links">
-                <li><a href="menu.html">Menu</a></li>
+                <li class="dropdown">
+                    <a href="menu.html">Menu</a>
+                    <ul class="dropdown-content">
+                        <li><a href="menu.html#entrees">Entrées</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#mains">Mains</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#desserts">Desserts</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#non-alcoholic">Non-Alcoholic Beverages</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#alcoholic">Alcoholic Beverages</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#kids">Kids Menu</a></li>
+                    </ul>
+                </li>                
                 <li><a href="reservation.html">Reservation</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html">Admin</a></li>
+                <li class="dropdown">
+                    <a href="#">Login</a>
+                    <ul class="dropdown-content">
+                        <li><a href="employee-login.html">Employee Login</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content with Menu and Cart -->
+
+    <h1>Menu</h1>
+    <!-- Main Content with Menu, Cart, and Sidebar -->
     <div class="main-content">
+        <!-- Sidebar with Vertical Tabs -->
+        <aside class="menu-sidebar">
+            <div class="menu-tabs">
+                <button class="tab-button active" onclick="openCategory('entrees')">Entrées</button>
+                <button class="tab-button" onclick="openCategory('mains')">Mains</button>
+                <button class="tab-button" onclick="openCategory('desserts')">Desserts</button>
+                <button class="tab-button" onclick="openCategory('non-alcoholic')">Non-Alcoholic Beverages</button>
+                <button class="tab-button" onclick="openCategory('alcoholic')">Alcoholic Beverages</button>
+                <button class="tab-button" onclick="openCategory('kids')">Kids Menu</button>
+            </div>
+        </aside>
+
         <!-- Menu Section -->
-        <section class="menu-section">
-            <h2>Menu</h2>
-
-            <!-- ENTRÉES -->
-            <div class="menu-category">
-                <h3>ENTRÉES</h3>
-                <table class="menu-table">
-                    <tr onclick="addToCart('MOMO - CHICKEN (STEAM)', 12.99)">
-                        <td><img src="dummy-photo.jpg" alt="MOMO - CHICKEN" class="menu-photo">MOMO - CHICKEN (STEAM)</td>
-                        <td>$12.99</td>
-                    </tr>
-                    <tr onclick="addToCart('MOMO - BUFF (STEAM)', 13.99)">
-                        <td><img src="dummy-photo.jpg" alt="MOMO - BUFF" class="menu-photo">MOMO - BUFF (STEAM)</td>
-                        <td>$13.99</td>
-                    </tr>
-                    <tr onclick="addToCart('MOMO - VEG (STEAM)', 13.20)">
-                        <td><img src="dummy-photo.jpg" alt="MOMO - VEG" class="menu-photo">MOMO - VEG (STEAM)</td>
-                        <td>$13.20</td>
-                    </tr>
-                    <tr onclick="addToCart('MOMO - CHICKEN (JHOL)', 13.90)">
-                        <td><img src="dummy-photo.jpg" alt="MOMO - CHICKEN JHOL" class="menu-photo">MOMO - CHICKEN (JHOL)</td>
-                        <td>$13.90</td>
-                    </tr>
-                    <tr onclick="addToCart('MOMO - BUFF (JHOL)', 14.90)">
-                        <td><img src="dummy-photo.jpg" alt="MOMO - BUFF JHOL" class="menu-photo">MOMO - BUFF (JHOL)</td>
-                        <td>$14.90</td>
-                    </tr>
-                    <tr onclick="addToCart('SHAVALE', 9.00)">
-                        <td><img src="dummy-photo.jpg" alt="SHAVALE" class="menu-photo">SHAVALE</td>
-                        <td>$9.00</td>
-                    </tr>
-                    <tr onclick="addToCart('BUFF CHOILA', 15.95)">
-                        <td><img src="dummy-photo.jpg" alt="BUFF CHOILA" class="menu-photo">BUFF CHOILA</td>
-                        <td>$15.95</td>
-                    </tr>
-                    <tr onclick="addToCart('CHATPATE', 10.00)">
-                        <td><img src="dummy-photo.jpg" alt="CHATPATE" class="menu-photo">CHATPATE</td>
-                        <td>$10.00</td>
-                    </tr>
-                    <tr onclick="addToCart('WAI-WAI SADHEKO', 10.90)">
-                        <td><img src="dummy-photo.jpg" alt="WAI-WAI SADHEKO" class="menu-photo">WAI-WAI SADHEKO</td>
-                        <td>$10.90</td>
-                    </tr>
-                    <tr onclick="addToCart('LAPHING', 13.00)">
-                        <td><img src="dummy-photo.jpg" alt="LAPHING" class="menu-photo">LAPHING</td>
-                        <td>$13.00</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- MAINS -->
-            <div class="menu-category">
-                <h3>MAINS</h3>
-                <table class="menu-table">
-                    <tr onclick="addToCart('CHICKEN THUKPA', 18.00)">
-                        <td><img src="dummy-photo.jpg" alt="CHICKEN THUKPA" class="menu-photo">CHICKEN THUKPA</td>
-                        <td>$18.00</td>
-                    </tr>
-                    <tr onclick="addToCart('FISH AND CHIPS', 20.00)">
-                        <td><img src="dummy-photo.jpg" alt="FISH AND CHIPS" class="menu-photo">FISH AND CHIPS</td>
-                        <td>$20.00</td>
-                    </tr>
-                    <tr onclick="addToCart('VEGGIE CHOW MEIN', 17.00)">
-                        <td><img src="dummy-photo.jpg" alt="VEGGIE CHOW MEIN" class="menu-photo">VEGGIE CHOW MEIN</td>
-                        <td>$17.00</td>
-                    </tr>
-                    <tr onclick="addToCart('BUTTER CHICKEN WITH RICE', 21.00)">
-                        <td><img src="dummy-photo.jpg" alt="BUTTER CHICKEN WITH RICE" class="menu-photo">BUTTER CHICKEN WITH RICE</td>
-                        <td>$21.00</td>
-                    </tr>
-                    <tr onclick="addToCart('DAL BHAT SET', 23.00)">
-                        <td><img src="dummy-photo.jpg" alt="DAL BHAT SET" class="menu-photo">DAL BHAT SET (NEPALI PLATTER)</td>
-                        <td>$23.00</td>
-                    </tr>
-                    <tr onclick="addToCart('AUSSIE BBQ RIBS', 26.00)">
-                        <td><img src="dummy-photo.jpg" alt="AUSSIE BBQ RIBS" class="menu-photo">AUSSIE BBQ RIBS</td>
-                        <td>$26.00</td>
-                    </tr>
-                    <tr onclick="addToCart('MARGHERITA PIZZA', 16.00)">
-                        <td><img src="dummy-photo.jpg" alt="MARGHERITA PIZZA" class="menu-photo">MARGHERITA PIZZA</td>
-                        <td>$16.00</td>
-                    </tr>
-                    <tr onclick="addToCart('PEPPERONI PIZZA', 18.00)">
-                        <td><img src="dummy-photo.jpg" alt="PEPPERONI PIZZA" class="menu-photo">PEPPERONI PIZZA</td>
-                        <td>$18.00</td>
-                    </tr>
-                    <tr onclick="addToCart('BBQ CHICKEN PIZZA', 20.00)">
-                        <td><img src="dummy-photo.jpg" alt="BBQ CHICKEN PIZZA" class="menu-photo">BBQ CHICKEN PIZZA</td>
-                        <td>$20.00</td>
-                    </tr>
-                    <tr onclick="addToCart('VEGETARIAN DELIGHT PIZZA', 17.00)">
-                        <td><img src="dummy-photo.jpg" alt="VEGETARIAN DELIGHT PIZZA" class="menu-photo">VEGETARIAN DELIGHT PIZZA</td>
-                        <td>$17.00</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- DESSERTS -->
-            <div class="menu-category">
-                <h3>DESSERTS</h3>
-                <table class="menu-table">
-                    <tr onclick="addToCart('GULAB JAMUN', 8.00)">
-                        <td><img src="dummy-photo.jpg" alt="GULAB JAMUN" class="menu-photo">GULAB JAMUN</td>
-                        <td>$8.00</td>
-                    </tr>
-                    <tr onclick="addToCart('LAMINGTONS', 7.00)">
-                        <td><img src="dummy-photo.jpg" alt="LAMINGTONS" class="menu-photo">LAMINGTONS</td>
-                        <td>$7.00</td>
-                    </tr>
-                    <tr onclick="addToCart('YOMARI', 9.00)">
-                        <td><img src="dummy-photo.jpg" alt="YOMARI" class="menu-photo">YOMARI</td>
-                        <td>$9.00</td>
-                    </tr>
-                    <tr onclick="addToCart('ICE CREAM', 3.50)">
-                        <td><img src="dummy-photo.jpg" alt="ICE CREAM" class="menu-photo">ICE CREAM</td>
-                        <td>$3.50</td>
-                    </tr>
-                    <tr onclick="addToCart('PAVLOVA WITH FRESH BERRIES', 11.00)">
-                        <td><img src="dummy-photo.jpg" alt="PAVLOVA WITH FRESH BERRIES" class="menu-photo">PAVLOVA WITH FRESH BERRIES</td>
-                        <td>$11.00</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- NON-ALCOHOLIC BEVERAGES -->
-            <div class="menu-category">
-                <h3>NON-ALCOHOLIC BEVERAGES</h3>
-                <table class="menu-table">
-                    <tr onclick="addToCart('MASALA CHAI', 5.00)">
-                        <td><img src="dummy-photo.jpg" alt="MASALA CHAI" class="menu-photo">MASALA CHAI</td>
-                        <td>$5.00</td>
-                    </tr>
-                    <tr onclick="addToCart('LEMON, LIME & BITTERS', 6.00)">
-                        <td><img src="dummy-photo.jpg" alt="LEMON, LIME & BITTERS" class="menu-photo">LEMON, LIME & BITTERS</td>
-                        <td>$6.00</td>
-                    </tr>
-                    <tr onclick="addToCart('GINGER LEMON HONEY TEA', 5.00)">
-                        <td><img src="dummy-photo.jpg" alt="GINGER LEMON HONEY TEA" class="menu-photo">GINGER LEMON HONEY TEA</td>
-                        <td>$5.00</td>
-                    </tr>
-                    <tr onclick="addToCart('MANGO LASSI', 7.00)">
-                        <td><img src="dummy-photo.jpg" alt="MANGO LASSI" class="menu-photo">MANGO LASSI</td>
-                        <td>$7.00</td>
-                    </tr>
-                    <tr onclick="addToCart('ICED COFFEE', 6.00)">
-                        <td><img src="dummy-photo.jpg" alt="ICED COFFEE" class="menu-photo">ICED COFFEE</td>
-                        <td>$6.00</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- ALCOHOLIC BEVERAGES -->
-            <div class="menu-category">
-                <h3>ALCOHOLIC BEVERAGES</h3>
-                <table class="menu-table">
-                    <tr onclick="addToCart('LOCAL NEPALI BEER', 8.00)">
-                        <td><img src="dummy-photo.jpg" alt="LOCAL NEPALI BEER" class="menu-photo">LOCAL NEPALI BEER</td>
-                        <td>$8.00</td>
-                    </tr>
-                    <tr onclick="addToCart('AUSTRALIAN SHIRAZ (Glass)', 9.00)">
-                        <td><img src="dummy-photo.jpg" alt="AUSTRALIAN SHIRAZ" class="menu-photo">AUSTRALIAN SHIRAZ (GLASS)</td>
-                        <td>$9.00</td>
-                    </tr>
-                    <tr onclick="addToCart('AUSTRALIAN SHIRAZ (Bottle)', 35.00)">
-                        <td><img src="dummy-photo.jpg" alt="AUSTRALIAN SHIRAZ" class="menu-photo">AUSTRALIAN SHIRAZ (BOTTLE)</td>
-                        <td>$35.00</td>
-                    </tr>
-                    <tr onclick="addToCart('CLASSIC MOJITO', 12.00)">
-                        <td><img src="dummy-photo.jpg" alt="CLASSIC MOJITO" class="menu-photo">CLASSIC MOJITO</td>
-                        <td>$12.00</td>
-                    </tr>
-                    <tr onclick="addToCart('EVEREST PREMIUM LAGER', 9.00)">
-                        <td><img src="dummy-photo.jpg" alt="EVEREST PREMIUM LAGER" class="menu-photo">EVEREST PREMIUM LAGER</td>
-                        <td>$9.00</td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- KIDS MENU -->
-            <div class="menu-category">
-                <h3>KIDS MENU</h3>
-                <table class="menu-table">
-                    <tr onclick="addToCart('CHICKEN NUGGETS WITH FRIES', 9.00)">
-                        <td><img src="dummy-photo.jpg" alt="CHICKEN NUGGETS" class="menu-photo">CHICKEN NUGGETS WITH FRIES</td>
-                        <td>$9.00</td>
-                    </tr>
-                    <tr onclick="addToCart('MINI CHEESE PIZZA', 8.00)">
-                        <td><img src="dummy-photo.jpg" alt="MINI CHEESE PIZZA" class="menu-photo">MINI CHEESE PIZZA</td>
-                        <td>$8.00</td>
-                    </tr>
-                    <tr onclick="addToCart('FISH FINGERS WITH SALAD', 9.00)">
-                        <td><img src="dummy-photo.jpg" alt="FISH FINGERS" class="menu-photo">FISH FINGERS WITH SALAD</td>
-                        <td>$9.00</td>
-                    </tr>
-                </table>
+        <section class="menu-section" id="entrees">
+            <h2>Entrées</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="dummy-photo.jpg" alt="MOMO - CHICKEN" class="menu-photo">
+                    <h3>MOMO - CHICKEN (STEAM)</h3>
+                    <p class="price">$12.99</p>
+                    <label for="quantity-1">Quantity:</label>
+                    <input type="number" id="quantity-1" value="1" min="1">
+                    <button onclick="addToCart('MOMO - CHICKEN (STEAM)', 12.99, document.getElementById('quantity-1').value)">Add to Cart</button>
+                </div>
+                <!-- Repeat for other menu items -->
             </div>
         </section>
 
-        <!-- Cart Section (sticky on the right) -->
+        <section class="menu-section" id="mains" style="display: none;">
+            <h2>Mains</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="dummy-photo.jpg" alt="CHICKEN THUKPA" class="menu-photo">
+                    <h3>CHICKEN THUKPA</h3>
+                    <p class="price">$18.00</p>
+                    <label for="quantity-2">Quantity:</label>
+                    <input type="number" id="quantity-2" value="1" min="1">
+                    <button onclick="addToCart('CHICKEN THUKPA', 18.00, document.getElementById('quantity-2').value)">Add to Cart</button>
+                </div>
+                <!-- Repeat for other items -->
+            </div>
+        </section>
+
+        <section class="menu-section" id="desserts" style="display: none;">
+            <h2>Desserts</h2>
+            <!-- Desserts content here -->
+        </section>
+        
+        <section class="menu-section" id="non-alcoholic" style="display: none;">
+            <h2>Non-Alcoholic Beverages</h2>
+            <!-- Non-Alcoholic Beverages content here -->
+        </section>
+        
+        <section class="menu-section" id="alcoholic" style="display: none;">
+            <h2>Alcoholic Beverages</h2>
+            <!-- Alcoholic Beverages content here -->
+        </section>
+        
+        <section class="menu-section" id="kids" style="display: none;">
+            <h2>Kids Menu</h2>
+            <!-- Kids Menu content here -->
+        </section>
+
+        <!-- Cart Section (Sticky on the right) -->
         <aside class="cart-section">
             <h2>Your Cart</h2>
             <div id="cart-items">
@@ -240,9 +130,122 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 Mountain Fusion Bistro. All rights reserved.</p>
+        <div class="footer-content">
+            <!-- Operating Hours -->
+            <div class="footer-hours">
+                <h4>Operating Hours</h4>
+                <p>Monday &nbsp;&nbsp; Closed</p>
+                <p>Tuesday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Wednesday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Thursday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Friday &nbsp;&nbsp; 7:30am - 12am</p>
+                <p>Saturday &nbsp;&nbsp; 9:30am - 12am</p>
+                <p>Sunday &nbsp;&nbsp; 9:30am - 12am</p>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-contact">
+                <p>We are available for function and event enquiries at all times</p>
+                <p>123 Bistro Lane, Food City, FC 45678</p>
+                <p><a href="mailto:info@mountainfusionbistro.com">info@mountainfusionbistro.com</a></p>
+                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            </div>
+    
+            <!-- Social Media Links -->
+            <div class="footer-social">
+                <a href="#"><img src="../images/facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="../images/instagram-icon.png" alt="Instagram"></a>
+                <a href="#"><img src="../images/tiktok-icon.png" alt="Tiktok"></a>
+                <a href="#"><img src="../images/star-icon.png" alt="Star"></a>
+            </div>
+        </div>
     </footer>
+    
 
-    <script src="../js/script.js"></script>
+<script>
+let cart = [];
+let totalPrice = 0;
+
+function addToCart(item, price, quantity) {
+    quantity = parseInt(quantity);
+    let itemInCart = cart.find(cartItem => cartItem.item === item);
+
+    if (itemInCart) {
+        itemInCart.quantity += quantity;
+        itemInCart.totalPrice += price * quantity;
+    } else {
+        cart.push({ item, price, quantity, totalPrice: price * quantity });
+    }
+
+    totalPrice += price * quantity;
+    displayCart();
+}
+
+function displayCart() {
+    let cartItems = document.getElementById('cart-items');
+    let totalElement = document.getElementById('total-price');
+    cartItems.innerHTML = '';
+
+    cart.forEach((cartItem, index) => {
+        let itemElement = document.createElement('div');
+        itemElement.innerHTML = `
+            <p>${cartItem.item} x ${cartItem.quantity} - $${cartItem.totalPrice.toFixed(2)}</p>
+            <div class="cart-buttons">
+                <button onclick="increaseQuantity(${index})">+</button>
+                <button onclick="decreaseQuantity(${index})">-</button>
+                <button onclick="removeFromCart(${index})">Remove</button>
+            </div>`;
+        cartItems.appendChild(itemElement);
+    });
+
+    totalElement.innerHTML = `<p>Total: $${totalPrice.toFixed(2)}</p>`;
+}
+
+function increaseQuantity(index) {
+    const cartItem = cart[index];
+    cartItem.quantity += 1;
+    cartItem.totalPrice += cartItem.price;
+    totalPrice += cartItem.price;
+    displayCart();
+}
+
+function decreaseQuantity(index) {
+    const cartItem = cart[index];
+    if (cartItem.quantity > 1) {
+        cartItem.quantity -= 1;
+        cartItem.totalPrice -= cartItem.price;
+        totalPrice -= cartItem.price;
+        displayCart();
+    } else {
+        removeFromCart(index);
+    }
+}
+
+function removeFromCart(index) {
+    const cartItem = cart[index];
+    totalPrice -= cartItem.totalPrice;
+    cart.splice(index, 1);
+    displayCart();
+}
+
+function checkout() {
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+    } else {
+        alert('Proceeding to checkout with total: $' + totalPrice.toFixed(2));
+    }
+}
+
+function openCategory(category) {
+    let sections = document.querySelectorAll('.menu-section');
+    sections.forEach(section => section.style.display = 'none');
+    document.getElementById(category).style.display = 'block';
+
+    let buttons = document.querySelectorAll('.tab-button');
+    buttons.forEach(button => button.classList.remove('active'));
+    document.querySelector(`.tab-button[onclick="openCategory('${category}')"]`).classList.add('active');
+}
+</script>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Styles */ 
 * {
     margin: 0;
     padding: 0;
@@ -8,15 +8,42 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-    padding-top: 60px; /* Space for the fixed header */
-    padding-bottom: 60px; /* Space for the fixed footer */
+    color: #2B1A1D;  /* Very Dark Brown for text */
+    background-color: #AE8A5E; /* Beige for background */
+    padding-top: 150px; /* Space for the fixed header */
+}
+
+/* Global Heading Styling */
+h1, h2, h3, h4 {
+    text-align: center; /* Center the headings */
+    color: #381C18; /* Dark Brown for headings */
+    font-family: 'Georgia', serif; /* Elegant font choice */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 2rem; /* Spacing below the headings */
+    text-transform: uppercase; /* Optional: Makes text uppercase */
+}
+
+h1 {
+    font-size: 3rem; /* Slightly bigger for h1 */
+}
+
+h2 {
+    font-size: 2.5rem; /* Slightly smaller for h2 */
+}
+
+h3 {
+    font-size: 2rem; /* For smaller subheadings */
+}
+
+h4 {
+    font-size: 2rem;
+    background-color: white; 
 }
 
 /* Header and Navigation */
 .header {
-    background-color: #333;
+    background-color: #381C18; /* Dark Brown header */
     padding: 1rem;
     color: white;
     position: fixed;
@@ -28,145 +55,262 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-.navbar .logo a {
-    color: white;
-    font-size: 1.5rem;
-    text-decoration: none;
+.logo {
+    margin-right: 10rem;
+}
+
+.logo-img {
+    height: 120px;  /* Adjust the height to your desired size */
+    width: auto;   /* Ensures the width scales proportionally */
 }
 
 .navbar .nav-links {
     list-style: none;
     display: flex;
-}
-
-.navbar .nav-links li {
-    margin-left: 1.5rem;
+    gap: 2rem;
 }
 
 .navbar .nav-links a {
     color: white;
     text-decoration: none;
+    font-size: x-large;
 }
 
 .navbar .nav-links a:hover {
-    color: #f60;
+    color: #8D542C; /* Light grayish brown for hover */
 }
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Menu (Initially Hidden) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #735238;  /* Background color of the dropdown */
+    min-width: 200px;           /* Minimum width of the dropdown */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);  /* Optional shadow for effect */
+    z-index: 1;
+    border-radius: 5px;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* Dropdown Links */
+.dropdown-content a {
+    color: white;
+    padding: 4px 8px;
+    text-decoration: none;
+    display: block;
+    font-size: large;
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: 3px 0;
+    background-color: #886E58; /* Lighter brown color for the divider */
+}
+
+.dropdown-content a:hover {
+    background-color: #5E4739;  /* Lighter color on hover */
+    text-decoration: underline;
+}
+
+/* Show the dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 /* Footer */
 .footer {
-    background-color: #333;
-    color: white;
+    background-color: #2B1A1D;
+    color: #fff;            /* White text */
+    padding: 2rem 0;
     text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    font-family: Arial, sans-serif;
 }
 
-/* Home Page (Hero Section) */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.footer-hours, .footer-contact, .footer-social {
+    margin-bottom: 1.5rem;
+}
+
+.footer-hours h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-hours p, .footer-contact p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.footer-contact a {
+    color: #8D542C;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+
+/* Social media icons */
+.footer-social a {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.footer-social img {
+    width: 40px;  /* Adjust size as per your icon size */
+    height: 40px;
+    filter: brightness(0) invert(1); /* Ensure icons are white */
+}
+
+.footer-social a:hover img {
+    filter: brightness(0) invert(0.7); /* Slightly dim on hover */
+}
+
+
+/* Hero Section (Home Page) */
 .hero {
     background: url('../images/bgimage.png') no-repeat center center/cover;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    color: white;
-    text-align: center;
-    padding-bottom: 100px;
     position: relative;
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-}
-
-.hero-content p {
-    margin: 1rem 0;
-}
-
-.hero-content {
-    display: none; /* Hide all text */
-}
-
-.cta-button {
-    padding: 0.75rem 1.5rem;
-    background-color: #f60;
+/* Specific styles for the unique reservation button */
+.reservation-button {
+    background-color: #8D542C;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    margin-top: 420px;
-    position: relative;
+    padding: 0.75rem 1.5rem;    /* Larger padding for this specific button */
+    border-radius: 5px;         /* Less rounded compared to global buttons */
+    font-size: 1.2rem;          /* Larger font size */
+    position: absolute;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%); /* Keep it centered */
+    transition: transform 0.2s ease, background-color 0.2s ease; 
+    margin-right: 0;            /* No margin-right for this specific button */
+    width: auto;
 }
 
-.cta-button:hover {
-    background-color: #ff7f24;
+.reservation-button:hover {
+    background-color: #5E4739;  /* Change only background color on hover */
+    transform: translateX(-50%) scale(1.05);
 }
+
+/* Globally align buttons inside a form or container to the right */
+.button-container {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;  /* Align the button to the right */
+    width: 30%;                /* Ensure the container takes full width */
+}
+
+/* Global button styling */
+button, 
+.cta-button {
+    background-color: #8D542C;  /* Medium brown for buttons */
+    color: white;
+    padding: 0.5rem 1rem;       /* Adjust the padding for a smaller button */
+    border-radius: 20px;        /* Increase border-radius for a rounded button look */
+    font-size: 1rem;            /* Adjust font size to make it consistent */
+    border: none;
+    cursor: pointer;
+    width: auto;                /* Ensure buttons don't stretch to full width */
+    display: inline-block;       /* Ensures buttons take only necessary space */
+    margin-right: 1rem;         /* Optional: Add margin to the right for some spacing */
+}
+
+/* Hover effect for all buttons */
+button:hover,
+.cta-button:hover {
+    background-color: #5E4739;  /* Slightly lighter brown on hover */
+    transform: scale(1.05); 
+}
+
+/* Button styling similar to the second image (rounded and smaller) */
+button {
+    padding: 0.5rem 1rem;       /* Smaller padding to mimic the compact size */
+    border-radius: 50px;        /* Higher value for a more rounded look */
+}
+
 
 /* Menu Page */
-.menu-section {
-    width: 70%;
-    padding: 2rem 0;
-    background-color: #fff;
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
 }
 
-.menu-section h2, .menu-category h3 {
-    text-align: center;
-    margin-bottom: 1rem;
+/* Sidebar for category navigation */
+.menu-sidebar {
+    width: 15%;
+    background-color: #5E3719;
+    padding: 20px;
+    position: sticky;
+    top: 60px;
+    height: calc(100vh - 120px);
 }
 
-/* Table Styles for Menu */
-.menu-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
+.menu-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.menu-table tr {
+.tab-button {
+    padding: 10px 20px;
+    background-color: #735238;
+    color: white;
+    border: none;
     cursor: pointer;
-    border-bottom: 1px solid #ccc;
-}
-
-.menu-table td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-}
-
-.menu-table td:nth-child(2) {
-    text-align: right;
-}
-
-.menu-table tr:hover {
-    background-color: #f0f0f0;
-}
-
-/* Image Styling for Menu Items */
-.menu-photo {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    margin-right: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
-    vertical-align: middle;
+    text-align: left;
+    width: 100%;
 }
 
-/* Cart Section (Menu Page) */
+.tab-button.active {
+    background-color: #5E3719;
+}
+
+/* Menu Section */
+.menu-section {
+    width: 60%;
+    padding: 20px;
+}
+
+/* Cart Section (Sticky on the right) */
 .cart-section {
     width: 25%;
-    padding: 2rem;
+    padding: 20px;
     background-color: #fff;
     border-left: 1px solid #ccc;
     position: sticky;
     top: 60px;
     height: calc(100vh - 120px); /* Adjust height for header and footer */
     text-align: center;
-    flex-shrink: 0; /* Prevent the cart from shrinking */
+    flex-shrink: 0;
 }
 
 #cart-items {
@@ -179,7 +323,7 @@ body {
 }
 
 #checkout-btn {
-    padding: 0.75rem 1.5rem;
+    padding: 10px 20px;
     background-color: #333;
     color: white;
     border: none;
@@ -191,300 +335,551 @@ body {
     background-color: #555;
 }
 
+/* Menu Grid */
+.menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.menu-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 220px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.menu-photo {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: #381C18;
+}
+
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.cart-buttons button {
+    padding: 5px 10px;
+    background-color: #8D542C;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cart-buttons button:hover {
+    background-color: #381C18;
+}
+
+
+
+
 /* Contact Page */
+.contact-info-section {
+    background-color: #2B1A1D;
+    padding: 3rem 0;
+    color: white;
+    text-align: center;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.contact-detail {
+    max-width: 300px;
+}
+
+.contact-detail h3 {
+    font-size: 1.5rem;
+    color: #f5f5f5;
+    margin-bottom: 0.5rem;
+}
+
+.contact-detail p {
+    font-size: 1.1rem;
+    color: #f5f5f5;
+}
+
+/* Centered Contact Form Section */
 .contact-section {
     padding: 2rem 0;
     background-color: #fff;
+    text-align: center;
 }
 
 .contact-section h2 {
-    text-align: center;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-.contact-description {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
+.contact-form-container {
+    max-width: 600px; /* Restrict form container width */
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    border-radius: 10px; /* Rounded corners */
+    text-align: left; /* Align text to the left */
 }
 
 .contact-form {
-    width: 80%;
-    margin: 0 auto;
-    max-width: 600px;
+    width: 100%;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
     display: block;
+    font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
-.form-group input, .form-group textarea {
+.form-group input,
+.form-group textarea {
+    width: 100%; /* Full-width input */
+    padding: 0.75rem;
+    border: 1px solid #735238; /* Medium brown for input borders */
+    background-color: #f9f9f9; /* Light gray for form fields */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.form-group textarea {
+    height: 150px; /* Adjust height for textarea */
+}
+
+/* Map Section */
+.map-section {
+    padding: 2rem 0;
+    background-color: #886E58; /* Light brown */
+    text-align: center;
+}
+
+#map {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-textarea {
-    resize: vertical;
-}
-
-button[type="submit"] {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-button[type="submit"]:hover {
-    background-color: #555;
+    height: 400px;
+    background-color: #ccc;
 }
 
 /* Reservation Page */
 .reservation-section {
     padding: 2rem 0;
-    background-color: #fff;
-}
-
-.reservation-section h2 {
-    text-align: center;
-    margin-bottom: 1rem;
+    background-color: #AE8A5E;
 }
 
 .reservation-form {
-    width: 80%;
-    margin: 0 auto;
     max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-button[type="submit"] {
+.form-group label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
     display: block;
+    color: #381C18;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #5E4739;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+}
+
+/* Style for the select element to match input fields */
+select {
+    width: 100%; /* Make it full-width like other input fields */
+    padding: 0.75rem; /* Padding to match other input fields */
+    border: 1px solid #735238; /* Same border as input fields */
+    background-color: #f9f9f9; /* Same background as input fields */
+    border-radius: 5px; /* Rounded corners like input fields */
+    font-size: 1rem; /* Consistent font size */
+    appearance: none; /* Remove the default arrow (this can be styled later if needed) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select:focus {
+    outline: none; /* Remove default focus outline */
+    border-color: #381C18; /* Highlight border on focus */
+}
+
+.form-group select {
+    height: 100%; /* Make sure it aligns with the height of input fields */
+}
+
+/* Faded placeholder text */
+::placeholder {
+    color: #888; /* Light gray for faded hint */
+    opacity: 1; /* For consistent cross-browser behavior */
+}
+
+/* Style for the hint */
+.hint {
+    display: none;
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Animation for fading in the hint */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Styles for date and time picker inputs */
+input[type="date"],
+input[type="time"] {
     padding: 0.5rem 1rem;
+    border: 1px solid #735238;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Style the number input field */
+input[type="number"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #5E4739;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Custom hover effect for number input */
+input[type="number"]:hover {
+    border-color: #886E58; /* Slightly darker on hover */
+}
+
+/* Focus effect for number input */
+input[type="number"]:focus {
+    outline: none;
+    border-color: #5E3719; /* Darker border on focus */
+    box-shadow: 0 0 5px rgba(94, 55, 25, 0.3); /* Shadow effect */
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Background overlay */
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+}
+
+/* Modal content box */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 80%;
+}
+
+.modal-content p {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: green;
+}
+
+.close-btn {
     background-color: #333;
     color: white;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1rem;
 }
 
-button[type="submit"]:hover {
+.close-btn:hover {
     background-color: #555;
 }
 
-/* Admin Page */
-.admin-section {
-    padding: 2rem 0;
-    background-color: #fff;
-}
 
-.admin-section h2 {
-    text-align: center;
-    margin-bottom: 1rem;
+/* Admin Pages */
+.admin-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Vertically center the form */
+    background-color: #B2A496;
 }
 
 .admin-form {
-    width: 80%;
-    margin: 0 auto;
-    max-width: 600px;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
-button[type="submit"] {
-    display: block;
-    padding: 0.5rem 1rem;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.form-group label {
     font-size: 1.1rem;
-    margin-top: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-button[type="submit"]:hover {
-    background-color: #555;
-}
-
-/* Reviews Section */
-.reviews-section {
-    padding: 2rem;
-    background-color: #fff;
-    text-align: center; /* Ensure the heading is centered */
-}
-
-.reviews-section h2 {
-    margin-bottom: 2rem;
-    text-align: center; /* Center the main heading */
-}
-
-/* Flex container for Review Form and Top Reviews */
-.reviews-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem; /* Add space between form and reviews sections */
-}
-
-/* Reviews Section */
-.reviews-section {
-    padding: 2rem;
-    background-color: #fff;
-    text-align: center; /* Ensure the heading is centered */
-}
-
-.reviews-section h2 {
-    margin-bottom: 2rem;
-    text-align: center; /* Center the main heading */
-}
-
-/* Flex container for Review Form and Top Reviews */
-.reviews-container {
-    display: flex; /* Flexbox layout for side-by-side alignment */
-    justify-content: space-between; /* Ensure space between sections */
-    gap: 2rem; /* Add space between form and reviews sections */
-    align-items: flex-start; /* Align items at the top */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-}
-
-/* Reviews Section */
-.reviews-section {
-    width: 100%; /* Ensure it takes up full width */
-    padding: 2rem;
-    background-color: #fff;
-    text-align: center; /* Center the heading */
-}
-
-/* Center the heading */
-.reviews-section h2 {
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-/* Flex container for Review Form and Top Reviews */
-.reviews-container {
-    display: flex;
-    justify-content: space-between; /* Ensure space between form and reviews */
-    align-items: flex-start; /* Align items at the top */
-    gap: 2rem; /* Space between sections */
-    max-width: 1200px; /* Optional: Limit the total width */
-    margin: 0 auto; /* Center the container */
-}
-
-/* Review Form Section */
-.review-form-section {
-    flex: 1; /* Equal space between sections */
-    max-width: 45%; /* Limit the width */
-}
-
-.review-form-section h3 {
-    margin-bottom: 1rem;
-}
-
-.review-form {
-    width: 100%;
-    margin: 0 auto;
-}
-
-.review-form .form-group {
-    margin-bottom: 1rem;
-}
-
-.review-form label {
-    display: block;
+    font-weight: bold;
     margin-bottom: 0.5rem;
+    display: block;
+    color: #5E3719;
 }
 
-.review-form input, 
-.review-form textarea {
+.form-group input {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
 }
 
-.review-form textarea {
-    resize: vertical;
-}
+/*Admin Dashboard*/
 
-.review-form button[type="submit"] {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: #333;
+.logout-btn {
+    background-color: #8D542C; /* Matching the theme colors */
     color: white;
-    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    cursor: pointer;
+    text-decoration: none;
+    font-size: large;
+}
+
+.logout-btn:hover {
+    background-color: #5E4739; /* Hover effect */
+}
+
+/* Centering the admin dashboard content */
+.admin-dashboard {
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+.admin-dashboard p {
+    font-size: 1.3rem;
+    color: #381C18;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #5E3719;
+}
+
+.card p {
+    font-size: 1.2rem;
+    color: #381C18;
+    margin-bottom: 1.5rem;
+}
+
+.card a {
+    display: inline-block;
+    text-decoration: none;
+    color: #8D542C;
+    font-weight: bold;
     font-size: 1.1rem;
     margin-top: 1rem;
+    border: 1px solid #8D542C;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.review-form button[type="submit"]:hover {
-    background-color: #555;
+.card a:hover {
+    background-color: #8D542C;
+    color: white;
 }
 
-/* Latest Reviews Section */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Reviews Section */
+.reviews-section {
+    padding: 3rem;
+    background-color: #B2A496; /* Light beige */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    border-radius: 10px;
+    max-width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.reviews-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 48%;
+}
+
+.reviews-list-container,
+.reviews-container {
+    height: auto;
+}
+
+.review-form-section,
 .top-reviews-section {
-    flex: 1; /* Equal space between sections */
-    max-width: 45%; /* Limit the width */
-}
-
-.top-reviews-section h3 {
-    margin-bottom: 1rem;
-}
-
-.review {
+    flex: 1;
+    min-width: 300px;
     background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.reviews-list-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    width: 48%;
+    align-items: flex-start;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.reviews-list {
+    background-color: #fff;
     padding: 1rem;
     border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-height: 540px; /* Set a fixed height for the scrollable area */
+    overflow-y: auto;  /* Scroll only the list */
     margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    max-width: 100%;
-    margin: 0.5rem auto;
 }
 
-.review-text {
-    font-size: 1.1rem;
-    font-style: italic;
-    margin-bottom: 0.5rem;
+.reviews-list .review-text {
+    word-wrap: break-word;  /* Break long words to the next line */
+    word-break: break-word; /* Ensure long words are broken and wrapped */
+    white-space: normal;    /* Make sure the text wraps normally */
+}
+
+.review-form button {
+    background-color: #735238; /* Medium brown */
+}
+
+.review-form button:hover {
+    background-color: #886E58; /* Light brown hover */
 }
 
 .review-author {
-    font-size: 0.9rem;
-    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
     color: #555;
+    text-align: right;
 }
 
+.review-rating {
+    color: #f60;
+    font-size: 1.2rem;
+}
 
-/* Main Content Layout (Menu and Cart Section Alignment) */
-.main-content {
+.review-text {
+    font-family: 'Abril Fatface', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+#review-message {
+    width: 100%;      /* Set width to fill the container */
+    height: 150px;    /* Set a default height */
+    resize: none;     /* Disable resizing */
+    padding: 10px;    /* Optional: Add padding for better readability */
+    border: 1px solid #735238; /* Match the existing design with a border */
+    background-color: #f9f9f9; /* Match the background color */
+    border-radius: 5px; /* Optional: Rounded corners */
+}
+
+/* Star Rating System */
+.star-rating {
     display: flex;
-    justify-content: space-between;
-    padding: 0 2rem;
-    min-height: calc(100vh - 120px); /* Adjust for header and footer */
-    gap: 2rem; /* Gap between menu and cart sections */
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.star {
+    font-size: 4rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star.selected {
+    color: #f68b2c; /* Accent color for stars */
+}
+
+.star:hover ~ .star {
+    color: #ccc; /* Reset color */
 }

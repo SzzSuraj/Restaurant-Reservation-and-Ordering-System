@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,21 +12,45 @@
     <header class="header">
         <nav class="navbar">
             <div class="logo">
-                <a href="index.html">Mountain Fusion Bistro</a>
+                <a href="index.html">
+                    <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
+                </a>
             </div>
             <ul class="nav-links">
-                <li><a href="menu.html">Menu</a></li>
+                <li class="dropdown">
+                    <a href="menu.html">Menu</a>
+                    <ul class="dropdown-content">
+                        <li><a href="menu.html#entrees">Entrées</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#mains">Mains</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#desserts">Desserts</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#non-alcoholic">Non-Alcoholic Beverages</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#alcoholic">Alcoholic Beverages</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#kids">Kids Menu</a></li>
+                    </ul>
+                </li>
                 <li><a href="reservation.html">Reservation</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html">Admin</a></li>
+                <li class="dropdown">
+                    <a href="#">Login</a>
+                    <ul class="dropdown-content">
+                        <li><a href="employee-login.html">Employee Login</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
 
     <!-- Reviews Section -->
+    <h1>Customer Reviews</h1>
     <section class="reviews-section">
-        <h2>Customer Reviews</h2>
 
         <!-- Flex container for form and top reviews -->
         <div class="reviews-container">
@@ -36,57 +60,160 @@
                 <h3>Share Your Review</h3>
 
                 <!-- Form for submitting the review -->
-                <form class="review-form" action="/reviews/submit" method="POST">
+                <form class="review-form" action="/reviews/submit" method="POST" onsubmit="return validateForm()">
                     <div class="form-group">
                         <label for="reviewer-name">Your Name</label>
                         <input type="text" id="reviewer-name" name="name" required>
                     </div>
+                    
+                    <!-- Star Rating Section -->
                     <div class="form-group">
-                        <label for="review-message">Your Review</label>
-                        <textarea id="review-message" name="message" rows="5" required></textarea>
+                        <label for="star-rating">Rating</label>
+                        <div class="star-rating">
+                            <input type="hidden" id="rating" name="rating" value="0">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
                     </div>
-                    <button type="submit">Submit Review</button>
+                    
+                    <!-- Review Message with 300 Character Limit -->
+                    <div class="form-group">
+                        <label for="review-message">Your Review (Optional)</label>
+                        <textarea id="review-message" name="message" rows="5" maxlength="300"></textarea>
+                        <p id="char-count">0/300 characters</p> <!-- Character count display -->
+                    </div>
+
+                    <div class="button-container">
+                        <button type="submit">Submit Review</button>
+                    </div>
                 </form>
             </div>
+        </div>
 
-            <!-- Top Reviews Section -->
+        <div class="reviews-list-container">
+             <!-- Top Reviews Section -->
             <div class="top-reviews-section">
-                <h3>Top Reviews</h3>
-                <!-- Reviews will be dynamically injected here -->
+                 <h3>Top Reviews</h3>
+                    <div class="reviews-list">
+                    <!-- Reviews will be dynamically injected here -->
+                    </div>
             </div>
         </div>
+   
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 Mountain Fusion Bistro. All rights reserved.</p>
+        <div class="footer-content">
+            <!-- Operating Hours -->
+            <div class="footer-hours">
+                <h4>Operating Hours</h4>
+                <p>Monday &nbsp;&nbsp; Closed</p>
+                <p>Tuesday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Wednesday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Thursday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Friday &nbsp;&nbsp; 7:30am - 12am</p>
+                <p>Saturday &nbsp;&nbsp; 9:30am - 12am</p>
+                <p>Sunday &nbsp;&nbsp; 9:30am - 12am</p>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-contact">
+                <p>We are available for function and event enquiries at all times</p>
+                <p>123 Bistro Lane, Food City, FC 45678</p>
+                <p><a href="mailto:info@mountainfusionbistro.com">info@mountainfusionbistro.com</a></p>
+                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            </div>
+    
+            <!-- Social Media Links -->
+            <div class="footer-social">
+                <a href="#"><img src="../images/facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="../images/instagram-icon.png" alt="Instagram"></a>
+                <a href="#"><img src="../images/tiktok-icon.png" alt="Tiktok"></a>
+                <a href="#"><img src="../images/star-icon.png" alt="Star"></a>
+            </div>
+        </div>
     </footer>
+    
 
-    <!-- Optional: JavaScript for fetching and displaying reviews -->
+    <!-- JavaScript for handling star rating, character limit, and fetching/displaying reviews -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            fetchReviews();
+            const stars = document.querySelectorAll('.star');
+            const ratingInput = document.getElementById('rating');
+            let currentRating = 0; // Store the current selected rating
+
+            stars.forEach(star => {
+                // Handle click event to set the rating
+                star.addEventListener('click', function() {
+                    const ratingValue = this.getAttribute('data-value');
+                    ratingInput.value = ratingValue;
+                    currentRating = ratingValue; // Save the current rating
+
+                    // Update the stars UI based on the selected rating
+                    updateStars(currentRating);
+                });
+
+                // Handle mouseover event to temporarily highlight stars
+                star.addEventListener('mouseover', function() {
+                    const hoverValue = this.getAttribute('data-value');
+                    updateStars(hoverValue); // Highlight stars up to the hovered star
+                });
+
+                // Handle mouseout event to revert to the selected rating
+                star.addEventListener('mouseout', function() {
+                    updateStars(currentRating); // Revert to the selected rating after hover
+                });
+            });
+
+            // Function to update the star UI based on the rating value
+            function updateStars(rating) {
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= rating) {
+                        s.classList.add('selected'); // Highlight stars up to the rating
+                    } else {
+                        s.classList.remove('selected'); // Remove highlight for stars beyond the rating
+                    }
+                });
+            }
 
             // Fetch reviews from the server and display them
+            fetchReviews();
+
             async function fetchReviews() {
                 try {
                     const response = await fetch('/reviews/all'); // Fetch all reviews
                     const reviews = await response.json(); // Parse response to JSON
                     
-                    const reviewsContainer = document.querySelector('.top-reviews-section');
+                    const reviewsContainer = document.querySelector('.reviews-list');
                     reviewsContainer.innerHTML = ''; // Clear the current hardcoded reviews
 
-                    // Check if there are reviews to display
                     if (reviews.length === 0) {
                         reviewsContainer.innerHTML = '<p>No reviews yet. Be the first to leave a review!</p>';
                     } else {
-                        // Loop through the reviews and append them to the reviews container
-                        reviews.forEach(review => {
+                        const backgroundColors = ['#f9f9f9', '#ffe5e5', '#e5ffe5', '#e5e5ff', '#fff0b3'];
+
+                        reviews.forEach((review, index )=> {
                             const reviewElement = document.createElement('div');
                             reviewElement.classList.add('review');
-                            reviewElement.innerHTML = `
-                                <p class="review-text">"${review.message}" - ${review.name}</p>
-                            `;
+
+                            const backgroundColor = backgroundColors[index % backgroundColors.length];
+                            reviewElement.style.backgroundColor = backgroundColor;
+
+                            const starRating = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                            let reviewContent = `
+                                <p class="review-rating">${starRating}</p>
+                                <p class="review-author">- ${review.name}</p>
+                           `;
+
+                            if (review.message) {
+                                reviewContent += `<p class="review-text">"${review.message}"</p>`;
+                            }
+
+                            reviewElement.innerHTML = reviewContent;
                             reviewsContainer.appendChild(reviewElement);
                         });
                     }
@@ -94,7 +221,38 @@
                     console.error('Error fetching reviews:', error);
                 }
             }
+
+            // Live character count for the review textarea
+            const messageInput = document.getElementById('review-message');
+            const charCountDisplay = document.getElementById('char-count');
+            messageInput.addEventListener('input', function() {
+                const charCount = this.value.length; // Count the number of characters
+                charCountDisplay.textContent = `${charCount}/300 characters`; // Display character count
+            });
         });
+
+        // Validation for star rating and character count
+        function validateForm() {
+            const ratingValue = document.getElementById('rating').value;
+            const message = document.getElementById('review-message').value.trim();
+
+            // Check if the rating has been selected
+            if (ratingValue === "0") {
+                alert("Please select a star rating before submitting the review.");
+                return false; // Prevent form submission
+            }
+
+            // Check if the message has exceeded 300 characters
+            const charCount = message.length;
+            if (charCount > 300) {
+                alert("Your review message exceeds the 300-character limit.");
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission if validation passes
+        }
+
     </script>
+
 </body>
 </html>

@@ -8,31 +8,85 @@
 </head>
 <body>
 
-    <!-- Header (optional, remove if not needed) -->
+    <!-- Header -->
     <header class="header">
         <nav class="navbar">
             <div class="logo">
-                <a href="index.html">Mountain Fusion Bistro</a>
+                <a href="index.html">
+                    <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
+                </a>
             </div>
             <ul class="nav-links">
-                <li><a href="menu.html">Menu</a></li>
+                <li class="dropdown">
+                    <a href="menu.html">Menu</a>
+                    <ul class="dropdown-content">
+                        <li><a href="menu.html#entrees">Entrées</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#mains">Mains</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#desserts">Desserts</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#non-alcoholic">Non-Alcoholic Beverages</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#alcoholic">Alcoholic Beverages</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="menu.html#kids">Kids Menu</a></li>
+                    </ul>
+                </li>
                 <li><a href="reservation.html">Reservation</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html">Admin</a></li>
+                <li class="dropdown">
+                    <a href="#">Login</a>
+                    <ul class="dropdown-content">
+                        <li><a href="employee-login.html">Employee Login</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
     </header>
 
     <!-- Hero Section with Background Image and Reservation Button -->
     <section class="hero">
-        <a href="reservation.html" class="cta-button">Make a Reservation</a>
+        <!-- Changed the class name to 'reservation-button' -->
+        <a href="reservation.html" class="reservation-button">Make a Reservation</a>
     </section>
 
-    <!-- Footer (optional, remove if not needed) -->
+    <!-- Footer -->
     <footer class="footer">
-        <p>© 2024 Mountain Fusion Bistro. All rights reserved.</p>
+        <div class="footer-content">
+            <!-- Operating Hours -->
+            <div class="footer-hours">
+                <h4>Operating Hours</h4>
+                <p>Monday &nbsp;&nbsp; Closed</p>
+                <p>Tuesday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Wednesday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Thursday &nbsp;&nbsp; 7:30am - 10pm</p>
+                <p>Friday &nbsp;&nbsp; 7:30am - 12am</p>
+                <p>Saturday &nbsp;&nbsp; 9:30am - 12am</p>
+                <p>Sunday &nbsp;&nbsp; 9:30am - 12am</p>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-contact">
+                <p>We are available for function and event enquiries at all times</p>
+                <p>123 Bistro Lane, Food City, FC 45678</p>
+                <p><a href="mailto:info@mountainfusionbistro.com">info@mountainfusionbistro.com</a></p>
+                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            </div>
+    
+            <!-- Social Media Links -->
+            <div class="footer-social">
+                <a href="#"><img src="../images/facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="../images/instagram-icon.png" alt="Instagram"></a>
+                <a href="#"><img src="../images/tiktok-icon.png" alt="Tiktok"></a>
+                <a href="#"><img src="../images/star-icon.png" alt="Star"></a>
+            </div>
+        </div>
     </footer>
+    
 
 </body>
 </html>

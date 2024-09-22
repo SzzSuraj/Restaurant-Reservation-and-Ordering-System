@@ -4,10 +4,10 @@ const Review = require('../models/Review');
 
 // POST route for submitting reviews
 router.post('/submit', async (req, res) => {
-    const { name, message } = req.body;
+    const { name, message, rating } = req.body; // Get the rating along with name and message
     try {
         // Create and save the review in the database
-        const newReview = new Review({ name, message });
+        const newReview = new Review({ name, message: message || '', rating });
         await newReview.save();
 
         // Redirect to the reviews page after saving the review

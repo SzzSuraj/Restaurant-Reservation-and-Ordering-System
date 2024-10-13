@@ -30,4 +30,15 @@ router.get('/all', async (req, res) => {
     }
 });
 
+router.get('/top-reviews', async (req, res) => {
+    try {
+        // Fetch top 3 reviews based on the rating in descending order
+        const topReviews = await Review.find().sort({ rating: -1 }).limit(3);
+        res.json(topReviews); // Return reviews as JSON to the frontend
+    } catch (error) {
+        console.error('Error fetching reviews:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
 module.exports = router;

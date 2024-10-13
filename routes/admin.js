@@ -17,15 +17,23 @@ router.use(session({
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
 
+  const emailRegex = /\S+@\S+\.\S+/;
+  if (!emailRegex.test(username)) {
+    return res.status(400).json({ success: false, message: 'Invalid email format' });
+  }
+
   try {
     const admin = await Admin.findOne({ username });
+    console.log("Found Admin: ", admin);
     if (!admin) {
       return res.status(400).json({ success: false, message: 'Invalid Username or Password' });
     }
     const isMatch = await bcrypt.compare(password, admin.password);
+    console.log("Password Match: ", isMatch);
     if (!isMatch) {  
       return res.status(400).json({ success: false, message: 'Invalid Username or Password' });
     }
+    console.log("Login Successful");
     // Store admin details in session and redirect to admin.html
     req.session.admin = admin;
     return res.json({ success: true, redirectUrl: '/admin/dashboard' });
@@ -34,22 +42,3 @@ router.post('/login', async (req, res) => {
     return res.status(500).json({ success: false, message: 'Server Error' });
   }
 });
-
-// Admin Dashboard Route (Protected)
-router.get('/dashboard', (req, res) => {
-  if (!req.session.admin) {
-    return res.redirect('/html/admin-login.html'); // Redirect to login page if not authenticated
-  }
-  // Render the admin.html page (adjust path based on your project structure)
-  res.sendFile(path.join(__dirname, '../public/html/admin-dashboard.html'));  // Correct path to your admin.html file
-});
-
-// Admin Logout Route
-router.get('/logout', (req, res) => {
-  req.session.destroy(err => {
-    if (err) return res.status(500).send('Error logging out');
-    res.redirect('/html/admin-login.html');  // Redirect back to login page after logout
-  });
-});
-
-module.exports = router;

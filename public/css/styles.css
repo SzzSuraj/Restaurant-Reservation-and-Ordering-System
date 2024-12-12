@@ -55,6 +55,37 @@ h5 {
     z-index: 1000;
 }
 
+/* Announcements Section */
+.announcements-section {
+    background-color: #8aa2a9; /* Light brown background to stand out */
+    color: #ffffff;
+    padding: 3rem 0; /* Padding for spacing */
+    text-align: center;
+    border-bottom: 0.00000000000001px solid #ffffff; /* Subtle border at the bottom */
+    margin-bottom: 2rem; /* Spacing below the section */
+}
+
+.announcements-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.announcement {
+    background-color: #ffffff; /* White background for individual announcements */
+    color: #333333; /* Dark text for contrast */
+    padding: 1rem;
+    margin: 0.5rem 0; /* Space between announcements */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-size: 1.1rem;
+    font-family: 'Georgia', serif;
+}
+
+.announcement p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+
 /* Navbar styling */
 .navbar {
     width: 100%;
@@ -1092,3 +1123,4 @@ h5 {
     color: #666;
     text-align: left;
 }
+

@@ -171,4 +171,27 @@ router.post('/reset/:token', async (req, res) => {
   }
 });
 
+// Manage Announcements Page Route
+router.get('/manage-announcements', (req, res) => {
+  if (!req.session.admin) {
+      return res.redirect('/html/admin-login.html'); // Redirect to login page if not authenticated
+  }
+  res.sendFile(path.join(__dirname, '../public/html/manage-announcements.html'));
+});
+
+// Handle Announcement Submission
+router.post('/manage-announcements', async (req, res) => {
+  if (!req.session.admin) {
+      return res.redirect('/html/admin-login.html');
+  }
+  try {
+      const { announcement } = req.body;
+      await Announcement.findOneAndUpdate({}, { text: announcement }, { upsert: true });
+      res.redirect('/admin/dashboard');
+  } catch (error) {
+      console.error('Error saving announcement:', error);
+      res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

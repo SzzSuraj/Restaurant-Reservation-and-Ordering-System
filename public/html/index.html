@@ -44,49 +44,58 @@
     </nav>
 </header>
     
-    <section class="hero">
-    </section>
+<!-- Hero Section -->
+<section class="hero">
+</section>
 
-    <!-- Reviews Section -->
-    <section class="reviews-section">
-        <h3>What Our Customers Say</h3>
-        <div class="reviews-slider" id="reviewsSlider">
-            <!-- Reviews will be dynamically inserted here -->
+<!-- Announcements Section -->
+<section class="announcements-section">
+    <h3>Announcements</h3>
+    <div class="announcements-container" id="announcementsContainer">
+        <!-- Announcements will be dynamically inserted here -->
+    </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="reviews-section">
+    <h3>What Our Customers Say</h3>
+    <div class="reviews-slider" id="reviewsSlider">
+        <!-- Reviews will be dynamically inserted here -->
+    </div>
+    <a href="reviews.html" class="view-all-reviews">View All Reviews</a>
+</section>
+
+<!-- Informational Section -->
+<section class="info-section">
+    <div class="info-card">
+        <img src="../images/bg1.png" alt="Private Functions & Events">
+        <div class="info-content">
+            <h3>Private Functions & Events</h3>
+            <p>Host your next special occasion at Mountain Fusion Bistro. We offer customizable food and drink packages to make your private functions truly unique and memorable. Our team will ensure every detail is perfect.</p>
+            <a href="reservation.html">Book Now</a>
         </div>
-        <a href="reviews.html" class="view-all-reviews">View All Reviews</a>
-    </section>
+    </div>
 
-    <!-- Informational Section -->
-    <section class="info-section">
-        <div class="info-card">
-            <img src="../images/bg1.png" alt="Private Functions & Events">
-            <div class="info-content">
-                <h3>Private Functions & Events</h3>
-                <p>Host your next special occasion at Mountain Fusion Bistro. We offer customizable food and drink packages to make your private functions truly unique and memorable. Our team will ensure every detail is perfect.</p>
-                <a href="reservation.html">Book Now</a>
-            </div>
+    <div class="info-card">
+        <img src="../images/bg2.png" alt="Our Menu">
+        <div class="info-content">
+            <h3>Our Menu</h3>
+            <p>Explore our carefully curated menu featuring a variety of dishes to suit all tastes. From entrées to desserts, and a wide selection of beverages, our offerings are crafted with the finest ingredients to delight your palate.</p>
+            <a href="menu.html">View Full Menu</a>
         </div>
+    </div>
 
-        <div class="info-card">
-            <img src="../images/bg2.png" alt="Our Menu">
-            <div class="info-content">
-                <h3>Our Menu</h3>
-                <p>Explore our carefully curated menu featuring a variety of dishes to suit all tastes. From entrées to desserts, and a wide selection of beverages, our offerings are crafted with the finest ingredients to delight your palate.</p>
-                <a href="menu.html">View Full Menu</a>
-            </div>
+    <div class="info-card">
+        <img src="../images/bg4.png" alt="Visit Us">
+        <div class="info-content">
+            <h3>Visit Us</h3>
+            <p>Come and experience the welcoming atmosphere of Mountain Fusion Bistro. Whether you're joining us for a casual meal or a special event, we are here to make your visit unforgettable. Get in touch or visit us today!</p>
+            <a href="contact.html">Contact Us</a>
         </div>
+    </div>
+</section>
 
-        <div class="info-card">
-            <img src="../images/bg4.png" alt="Visit Us">
-            <div class="info-content">
-                <h3>Visit Us</h3>
-                <p>Come and experience the welcoming atmosphere of Mountain Fusion Bistro. Whether you're joining us for a casual meal or a special event, we are here to make your visit unforgettable. Get in touch or visit us today!</p>
-                <a href="contact.html">Contact Us</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+<!-- Footer -->
 <footer class="footer">
     <div class="footer-container">
         <!-- Mountain Fusion Bistro Info -->
@@ -126,27 +135,25 @@
         <p>© 2024. All rights reserved by Mountain Fusion Bistro.</p>
     </div>
 </footer>
+
 <script>
     document.addEventListener('DOMContentLoaded', async () => {
-        const reviewsSlider = document.getElementById('reviewsSlider');
+        const announcementsContainer = document.getElementById('announcementsContainer');
         
         try {
-            // Fetch the top 3 reviews from the server
-            const response = await fetch('/reviews/top-reviews');
-            const reviews = await response.json();
+            // Fetch announcements from the server
+            const response = await fetch('/announcements');
+            const announcements = await response.json();
             
-            // Generate the HTML for each review and add it to the slider
-            reviews.forEach(review => {
-                const reviewCard = document.createElement('div');
-                reviewCard.classList.add('review-card');
-                reviewCard.innerHTML = `
-                    <p>"${review.message}"</p>
-                    <div class="author">- ${review.name}</div>
-                `;
-                reviewsSlider.appendChild(reviewCard);
+            // Generate the HTML for each announcement
+            announcements.forEach(announcement => {
+                const announcementElement = document.createElement('div');
+                announcementElement.classList.add('announcement');
+                announcementElement.innerHTML = `<p>${announcement.message}</p>`;
+                announcementsContainer.appendChild(announcementElement);
             });
         } catch (error) {
-            console.error('Error fetching reviews:', error);
+            console.error('Error fetching announcements:', error);
         }
     });
 </script>

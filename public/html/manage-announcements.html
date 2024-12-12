@@ -1,0 +1,34 @@
+<!-- manage-announcements.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Fusion Bistro - Manage Announcements</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="admin-d-page">
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/admin/logout" class="logout-btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Announcement Management Section -->
+    <section class="announcement-management">
+        <h1>Manage Announcements</h1>
+        <form action="/admin/manage-announcements" method="post">
+            <div class="form-group">
+                <label for="announcement">Announcement Text:</label>
+                <textarea id="announcement" name="announcement" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Save Announcement</button>
+        </form>
+    </section>
+</body>
+</html>

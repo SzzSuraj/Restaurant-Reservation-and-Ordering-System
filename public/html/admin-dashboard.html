@@ -5,6 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mountain Fusion Bistro - Admin Dashboard</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .dashboard-box {
+            background-color: #ac733f; /* Match the color scheme */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .dashboard-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-box a {
+            background-color: #333333;
+            color: #ffffff;
+            padding: 10px 50px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .dashboard-box a:hover {
+            background-color: #484646;
+        }
+
+        .admin-dashboard h1 {
+            margin-bottom: 20px;
+        }
+
+        body.admin-d-page {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
 </head>
 <body class="admin-d-page">
 
@@ -23,44 +72,40 @@
     <!-- Admin Dashboard Section -->
     <section class="admin-dashboard">
         <h1>Admin Dashboard</h1>
-        <p>Welcome, Admin! You are logged in.</p>
 
-        <!-- Dashboard Cards -->
-        <div class="dashboard-cards">
-            <div class="card">
+        <!-- Dashboard Boxes -->
+        <div class="dashboard-container">
+            <div class="dashboard-box">
                 <h2>Change Your Password</h2>
-                <p>Update your account security.</p>
-                <a href="/admin/change-password">Know more</a>
+                <a href="/admin/change-password">Go</a>
             </div>
-            <div class="card">
+            <div class="dashboard-box">
                 <h2>Menu Modification</h2>
-                <p>Update or add items to the menu.</p>
-                <a href="/admin/menu-modification">Know more</a>
+                <a href="/admin/menu-modification">Go</a>
             </div>
-            <div class="card">
+            <div class="dashboard-box">
                 <h2>Create a User</h2>
-                <p>Add a new user account.</p>
-                <a href="/admin/create-user">Know more</a>
+                <a href="/admin/create-user">Go</a>
             </div>
-            <div class="card">
+            <div class="dashboard-box">
                 <h2>See All Reservations</h2>
-                <p>View current reservations.</p>
-                <a href="/admin/reservations">Know more</a>
+                <a href="/admin/reservations">Go</a>
             </div>
-            <div class="card">
+            <div class="dashboard-box">
                 <h2>See All Orders This Hour</h2>
-                <p>View recent orders.</p>
-                <a href="/admin/orders-this-hour">Know more</a>
+                <a href="/admin/orders-this-hour">Go</a>
             </div>
-            <div class="card">
+            <div class="dashboard-box">
                 <h2>See All Reviews</h2>
-                <p>Check reviews from customers.</p>
-                <a href="/admin/reviews">Know more</a>
+                <a href="/admin/reviews">Go</a>
             </div>
-            <div class="card">
+            <div class="dashboard-box">
                 <h2>See All Messages</h2>
-                <p>View messages sent via contact form.</p>
-                <a href="/admin/messages">Know more</a>
+                <a href="/admin/messages">Go</a>
+            </div>
+            <div class="dashboard-box">
+                <h2>Manage Announcements</h2>
+                <a href="/admin/manage-announcements">Go</a>
             </div>
         </div>
     </section>

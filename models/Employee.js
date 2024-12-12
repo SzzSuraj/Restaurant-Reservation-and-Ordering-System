@@ -2,36 +2,41 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 // Employee Schema
-const employeeSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
+const EmployeeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    resetToken: {
+        type: String,
+        default: null
+    },
+    resetTokenExpiry: {
+        type: Date,
+        default: null
+    }
 });
 
-// Hash password before saving the employee
-employeeSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();  // Only hash if password is new or modified
-  try {
+// Hash password before saving
+EmployeeSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
     next();
-  } catch (error) {
-    next(error);
-  }
 });
 
-// Validate the password
-employeeSchema.methods.isValidPassword = async function (password) {
-  return await bcrypt.compare(password, this.password);
+// Compare password
+EmployeeSchema.methods.comparePassword = async function (password) {
+    return bcrypt.compare(password, this.password);
 };
 
-const Employee = mongoose.model('Employee', employeeSchema);
-
-
-module.exports = Employee;
+module.exports = mongoose.model('Employee', EmployeeSchema);

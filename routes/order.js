@@ -13,7 +13,7 @@ router.post('/submit', async (req, res) => {
         const newOrder = new Order({ items, totalPrice });
         await newOrder.save();
 
-        res.status(200).send('Order saved');
+        res.status(200).json({ message: 'Order saved successfully!' });
     } catch (error) {
         console.error('Error saving order:', error);
         res.status(500).send('Server Error');

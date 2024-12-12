@@ -47,4 +47,16 @@ router.post('/submit', async (req, res) => {
     }
 });
 
+router.get('/api/reservations', async (req, res) => {
+    try {
+        const reservations = await Reservation.find();
+        res.json(reservations); // Send reservations as JSON
+    } catch (error) {
+        console.error('Error fetching reservations:', error);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+
 module.exports = router;

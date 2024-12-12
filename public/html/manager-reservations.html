@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Reservations</title>
+    <link rel="stylesheet" href="../css/styles.css">
+<style>
+    /* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header styles */
+header {
+    background-color: #8B4513; /* Brown background for the header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Table styles */
+section {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #8B4513; /* Brown background for the table header */
+    color: white;
+    font-weight: bold;
+    text-align: left;
+}
+
+thead th {
+    padding: 12px;
+    text-align: center;
+}
+
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+    background-color: #f9f9f9; /* Light gray background on hover */
+}
+
+tbody td {
+    padding: 12px;
+    text-align: center;
+}
+
+tbody td button {
+    padding: 8px 12px;
+    background-color: #8B4513;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+tbody td button:hover {
+    background-color: #A0522D; /* Slightly lighter brown on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        font-size: 0.9rem;
+    }
+
+    thead th,
+    tbody td {
+        padding: 10px;
+    }
+}
+
+/* Footer styles (optional) */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #8B4513;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+</style>
+    
+</head>
+<body>
+    <header>
+        <h1>All Reservations</h1>
+    </header>
+    <section>
+        <table id="reservations-table">
+            <thead>
+                <tr>
+                    <th>Reservation ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>People</th>
+                    <th>Table Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be populated dynamically -->
+            </tbody>
+        </table>
+    </section>
+    <script>
+        // Fetch reservations from the API and populate the table
+        async function fetchReservations() {
+            try {
+                const response = await fetch('/api/reservations'); // Fetch data from API
+                const reservations = await response.json();
+
+                // Get the table body element
+                const tableBody = document.querySelector('#reservations-table tbody');
+                tableBody.innerHTML = ''; // Clear any existing content
+
+                // Populate the table with reservation data
+                reservations.forEach(reservation => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${reservation._id}</td>
+                        <td>${reservation.fullName}</td>
+                        <td>${reservation.email}</td>
+                        <td>${reservation.mobileNumber}</td>
+                        <td>${new Date(reservation.reservationDate).toLocaleDateString()}</td>
+                        <td>${reservation.reservationTime}</td>
+                        <td>${reservation.numberOfPeople}</td>
+                        <td>${reservation.tableLocation}</td>
+                        <td><button onclick="viewDetails('${reservation._id}')">View</button></td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching reservations:', error);
+            }
+        }
+
+        // Handle the "View Details" button click
+        function viewDetails(reservationId) {
+            alert(`View details for reservation ID: ${reservationId}`);
+        }
+
+        // Load reservations when the page loads
+        document.addEventListener('DOMContentLoaded', fetchReservations);
+    </script>
+</body>
+</html>

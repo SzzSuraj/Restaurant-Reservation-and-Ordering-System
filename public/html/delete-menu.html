@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Menu Item</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        main {
+            margin: 2rem auto;
+            padding: 2rem;
+            max-width: 800px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .controls input[type="text"],
+        .controls select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 0.7rem;
+            font-size: 1rem;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #menu-items div {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #response {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        #response.success {
+            background: #e0ffe0;
+            border: 1px solid #c3ffc3;
+            color: #333;
+        }
+
+        #response.error {
+            background: #ffe0e0;
+            border: 1px solid #ffc3c3;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Delete Menu Item</h1>
+    </header>
+    <main>
+        <div class="controls">
+            <input type="text" id="search" placeholder="Search by name" oninput="filterItems()">
+            <select id="sort" onchange="sortItems()">
+                <option value="none">Sort By</option>
+                <option value="category">Category</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+        <div id="menu-items"></div>
+        <div id="response"></div>
+    </main>
+    <script>
+        let menuItems = [];
+
+        async function fetchMenuItems() {
+            try {
+                const response = await fetch('/menu/all');
+                menuItems = await response.json();
+                displayMenuItems(menuItems);
+            } catch (error) {
+                console.error('Error fetching menu items:', error);
+            }
+        }
+
+        function displayMenuItems(items) {
+            const menuContainer = document.getElementById('menu-items');
+            menuContainer.innerHTML = '';
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `
+                    <p>${item.name} (${item.category}) - $${item.price}</p>
+                    <button onclick="deleteItem('${item._id}')">Delete</button>
+                `;
+                menuContainer.appendChild(itemDiv);
+            });
+        }
+
+        async function deleteItem(id) {
+            try {
+                const response = await fetch(`/menu/delete/${id}`, { method: 'DELETE' });
+                const result = await response.json();
+
+                const responseDiv = document.getElementById('response');
+                responseDiv.innerText = result.message;
+                responseDiv.classList.remove('error');
+                responseDiv.classList.add('success');
+
+                menuItems = menuItems.filter(item => item._id !== id);
+                displayMenuItems(menuItems);
+            } catch (error) {
+                const responseDiv = document.getElementById('response');
+                responseDiv.innerText = 'Error deleting menu item';
+                responseDiv.classList.remove('success');
+                responseDiv.classList.add('error');
+            }
+        }
+
+        function filterItems() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const filteredItems = menuItems.filter(item => item.name.toLowerCase().includes(searchTerm));
+            displayMenuItems(filteredItems);
+        }
+
+        function sortItems() {
+            const sortValue = document.getElementById('sort').value;
+            let sortedItems = [...menuItems];
+
+            if (sortValue === 'category') {
+                sortedItems.sort((a, b) => a.category.localeCompare(b.category));
+            } else if (sortValue === 'price') {
+                sortedItems.sort((a, b) => a.price - b.price);
+            }
+
+            displayMenuItems(sortedItems);
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchMenuItems);
+    </script>
+</body>
+</html>

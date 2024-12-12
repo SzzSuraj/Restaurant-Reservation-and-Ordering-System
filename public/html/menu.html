@@ -6,19 +6,37 @@
     <title>Mountain Fusion Bistro - Menu</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
+<style>
+#response {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+#response.success {
+    background: #e0ffe0;
+    border: 1px solid #c3ffc3;
+    color: #333;
+}
+
+#response.error {
+    background: #ffe0e0;
+    border: 1px solid #ffc3c3;
+    color: #333;
+}
+
+</style>
 </head>
 <body class="menu-page">
 
     <!-- Header -->
     <header class="header">
         <nav class="navbar">
-            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
                     <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
                 </a>
             </div>
-            <!-- Navigation Links with Dropdown -->
             <ul class="nav-links">
                 <li class="dropdown">
                     <a href="menu.html">Menu</a>
@@ -61,137 +79,30 @@
         <!-- Menu Sections -->
         <section class="menu-section" id="entrees">
             <h2>Entrées</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <img src="../images/steam.webp" alt="MOMO - CHICKEN">
-                    <h5>MOMO - CHICKEN (STEAM)</h5>
-                    <p class="price">$12.99</p>
-                    <label for="quantity-1">Quantity:</label>
-                    <input type="number" id="quantity-1" value="1" min="1">
-                    <button onclick="addToCart('MOMO - CHICKEN (STEAM)', 12.99, document.getElementById('quantity-1').value)">Add to Cart</button>
-                </div>
-                <div class="menu-item">
-                    <img src="../images/shavale.webp" alt="SHAVALE">
-                    <h5>SHAVALE</h5>
-                    <p class="price">$9.00</p>
-                    <label for="quantity-1.1">Quantity:</label>
-                    <input type="number" id="quantity-1.1" value="1" min="1">
-                    <button onclick="addToCart('SHAVALE', 9.00, document.getElementById('quantity-1.1').value)">Add to Cart</button>
-                </div>
-            </div>
+            <div class="menu-grid"></div>
         </section>
-
         <section class="menu-section" id="mains">
             <h2>Mains</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <img src="../images/chicken-thukpa.webp" alt="CHICKEN THUKPA">
-                    <h5>CHICKEN THUKPA</h5>
-                    <p class="price">$18.00</p>
-                    <label for="quantity-2">Quantity:</label>
-                    <input type="number" id="quantity-2" value="1" min="1">
-                    <button onclick="addToCart('CHICKEN THUKPA', 18.00, document.getElementById('quantity-2').value)">Add to Cart</button>
-                </div>
-                <div class="menu-item">
-                    <img src="../images/fish-and-chips.webp" alt="FISH AND CHIPS">
-                    <h5>FISH AND CHIPS</h5>
-                    <p class="price">$20.00</p>
-                    <label for="quantity-2.1">Quantity:</label>
-                    <input type="number" id="quantity-2.1" value="1" min="1">
-                    <button onclick="addToCart('FISH AND CHIPS', 20.00, document.getElementById('quantity-2.1').value)">Add to Cart</button>
-                </div>
-            </div>
+            <div class="menu-grid"></div>
         </section>
-
         <section class="menu-section" id="desserts">
             <h2>Desserts</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <img src="../images/gulab-jamun.webp" alt="GULAB JAMUN">
-                    <h5>GULAB JAMUN</h5>
-                    <p class="price">$8.00</p>
-                    <label for="quantity-3">Quantity:</label>
-                    <input type="number" id="quantity-3" value="1" min="1">
-                    <button onclick="addToCart('GULAB JAMUN', 8.00, document.getElementById('quantity-3').value)">Add to Cart</button>
-                </div>
-                <div class="menu-item">
-                    <img src="../images/lamingtons.webp" alt="LAMINGTONS">
-                    <h5>LAMINGTONS</h5>
-                    <p class="price">$7.00</p>
-                    <label for="quantity-3.1">Quantity:</label>
-                    <input type="number" id="quantity-3.1" value="1" min="1">
-                    <button onclick="addToCart('LAMINGTONS', 7.00, document.getElementById('quantity-3.1').value)">Add to Cart</button>
-                </div>
-            </div>
+            <div class="menu-grid"></div>
         </section>
-        
         <section class="menu-section" id="non-alcoholic">
             <h2>Non-Alcoholic Beverages</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <img src="../images/masala-chai.webp" alt="MASALA CHAI">
-                    <h5>MASALA CHAI</h5>
-                    <p class="price">$5.00</p>
-                    <label for="quantity-4">Quantity:</label>
-                    <input type="number" id="quantity-4" value="1" min="1">
-                    <button onclick="addToCart('MASALA CHAI', 5.00, document.getElementById('quantity-4').value)">Add to Cart</button>
-                </div>
-                <div class="menu-item">
-                    <img src="../images/lemon-lime-and-bitters.webp" alt="LEMON, LIME & BITTERS">
-                    <h5>LEMON, LIME & BITTERS</h5>
-                    <p class="price">$6.00</p>
-                    <label for="quantity-4.1">Quantity:</label>
-                    <input type="number" id="quantity-4.1" value="1" min="1">
-                    <button onclick="addToCart('LEMON, LIME & BITTERS', 6.00, document.getElementById('quantity-4.1').value)">Add to Cart</button>
-                </div>
-            </div>
+            <div class="menu-grid"></div>
         </section>
-        
         <section class="menu-section" id="alcoholic">
             <h2>Alcoholic Beverages</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <img src="../images/local-nepali-beer.webp" alt="LOCAL NEPALI BEER">
-                    <h5>LOCAL NEPALI BEER</h5>
-                    <p class="price">$8.00</p>
-                    <label for="quantity-5">Quantity:</label>
-                    <input type="number" id="quantity-5" value="1" min="1">
-                    <button onclick="addToCart('LOCAL NEPALI BEER', 8.00, document.getElementById('quantity-5').value)">Add to Cart</button>
-                </div>
-                <div class="menu-item">
-                    <img src="../images/australian-shiraz-g.webp" alt="AUSTRALIAN SHIRAZ (Glass)">
-                    <h5>AUSTRALIAN SHIRAZ (Glass)</h5>
-                    <p class="price">$9.00</p>
-                    <label for="quantity-5.1">Quantity:</label>
-                    <input type="number" id="quantity-5.1" value="1" min="1">
-                    <button onclick="addToCart('AUSTRALIAN SHIRAZ (Glass)', 9.00, document.getElementById('quantity-5.1').value)">Add to Cart</button>
-                </div>
-            </div>
+            <div class="menu-grid"></div>
         </section>
-        
         <section class="menu-section" id="kids">
             <h2>Kids Menu</h2>
-            <div class="menu-grid">
-                <div class="menu-item">
-                    <img src="../images/chicken-nuggets-and-fries.webp" alt="CHICKEN NUGGETS WITH FRIES">
-                    <h5>CHICKEN NUGGETS WITH FRIES</h5>
-                    <p class="price">$9.00</p>
-                    <label for="quantity-6">Quantity:</label>
-                    <input type="number" id="quantity-6" value="1" min="1">
-                    <button onclick="addToCart('CHICKEN NUGGETS WITH FRIES', 9.00, document.getElementById('quantity-6').value)">Add to Cart</button>
-                </div>
-                <div class="menu-item">
-                    <img src="../images/mini-cheese-pizza.webp" alt="MINI CHEESE PIZZA">
-                    <h5>MINI CHEESE PIZZA</h5>
-                    <p class="price">$8.00</p>
-                    <label for="quantity-6.1">Quantity:</label>
-                    <input type="number" id="quantity-6.1" value="1" min="1">
-                    <button onclick="addToCart('MINI CHEESE PIZZA', 8.00, document.getElementById('quantity-6.1').value)">Add to Cart</button>
-                </div>
-            </div>
+            <div class="menu-grid"></div>
         </section>
 
-        <!-- Cart Section (Sticky on the right) -->
+        <!-- Cart Section -->
         <aside class="cart-section">
             <h4>Your Order</h4>
             <div id="cart-items">
@@ -201,22 +112,13 @@
                 <p>Total: $0.00</p>
             </div>
             <button id="checkout-btn" onclick="checkout()">Checkout</button>
+            <div id="response"></div>
         </aside>
-    </div>
-    <div id="checkout-confirmation-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeCheckoutModal()">&times;</span>
-            <h4>Confirm Your Order</h4>
-            <p>Are you sure you want to proceed to checkout?</p>
-            <button onclick="proceedToCheckout()">Yes, Proceed</button>
-            <button onclick="closeCheckoutModal()">No, Continue Shopping</button>
-        </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <!-- Mountain Fusion Bistro Info -->
             <div class="footer-section">
                 <h3>MOUNTAIN FUSION BISTRO</h3>
                 <p>We are available for function and event enquiries at all times.</p>
@@ -224,11 +126,9 @@
                     <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://goo.gl/maps/your-map-link" target="_blank"><i class="fas fa-map-marker-alt"></i></a> <!-- Google Maps icon -->
+                    <a href="https://goo.gl/maps/your-map-link" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
                 </div>
             </div>
-
-            <!-- Menu Links -->
             <div class="footer-section">
                 <h3>OUR MENUS</h3>
                 <ul class="footer-menu">
@@ -240,8 +140,6 @@
                     <li><a href="menu.html?category=kids">Kids Menu</a></li>
                 </ul>
             </div>
-
-            <!-- Contact Info -->
             <div class="footer-section">
                 <h3>CONTACT US</h3>
                 <p>Phone: <a href="tel:+61234567890">+61 (234) 567-890</a></p>
@@ -255,155 +153,171 @@
     </footer>
 
 <script>
-let cart = [];
-let totalPrice = 0;
+    let cart = [];
+    let totalPrice = 0;
 
-function addToCart(item, price, quantity) {
-    quantity = parseInt(quantity);
-    let itemInCart = cart.find(cartItem => cartItem.item === item);
+    function addToCart(item, price, quantity) {
+        quantity = parseInt(quantity);
+        let itemInCart = cart.find(cartItem => cartItem.item === item);
 
-    if (itemInCart) {
-        itemInCart.quantity += quantity;
-        itemInCart.totalPrice += price * quantity;
-    } else {
-        cart.push({ item, price, quantity, totalPrice: price * quantity });
-    }
-
-    totalPrice += price * quantity;
-    displayCart();
-    expandCart();
-}
-
-function displayCart() {
-    let cartItems = document.getElementById('cart-items');
-    let totalElement = document.getElementById('total-price');
-    cartItems.innerHTML = '';
-
-    if (cart.length === 0) {
-        // Show "No items in cart" text when the cart is empty
-        cartItems.innerHTML = '<p>No items in cart.</p>';
-    } else {
-
-        cart.forEach((cartItem, index) => {
-            let itemElement = document.createElement('div');
-            itemElement.innerHTML = `
-                <p>${cartItem.item} x ${cartItem.quantity} - $${cartItem.totalPrice.toFixed(2)}</p>
-                <div class="cart-buttons">
-                    <button onclick="increaseQuantity(${index})">+</button>
-                    <button onclick="decreaseQuantity(${index})">-</button>
-                    <button onclick="removeFromCart(${index})">Remove</button>
-                </div>`;
-            cartItems.appendChild(itemElement);
-        });
-    }
-    totalElement.innerHTML = `<p>Total: $${totalPrice.toFixed(2)}</p>`;
-}
-
-function increaseQuantity(index) {
-    const cartItem = cart[index];
-    cartItem.quantity += 1;
-    cartItem.totalPrice += cartItem.price;
-    totalPrice += cartItem.price;
-    displayCart();
-}
-
-function decreaseQuantity(index) {
-    const cartItem = cart[index];
-    if (cartItem.quantity > 1) {
-        cartItem.quantity -= 1;
-        cartItem.totalPrice -= cartItem.price;
-        totalPrice -= cartItem.price;
-        displayCart();
-    } else {
-        removeFromCart(index);
-    }
-}
-
-function removeFromCart(index) {
-    const cartItem = cart[index];
-    totalPrice -= cartItem.totalPrice;
-    cart.splice(index, 1);
-    displayCart();
-}
-
-function checkout() {
-    if (cart.length === 0) {
-        alert('Your cart is empty!');
-    } else {
-        // Show the confirmation modal
-        showCheckoutModal();
-    }
-}
-
-function showCheckoutModal() {
-    const modal = document.getElementById('checkout-confirmation-modal');
-    modal.style.display = 'block';
-}
-
-function closeCheckoutModal() {
-    const modal = document.getElementById('checkout-confirmation-modal');
-    modal.style.display = 'none';
-}
-
-function proceedToCheckout() {
-    // Hide the modal
-    closeCheckoutModal();
-    saveOrderToDatabase();
-
-    cart = [];
-    totalPrice = 0;
-    displayCart();
-}
-
-function saveOrderToDatabase() {
-            const orderData = {
-                items: cart.map(item => ({ name: item.item, quantity: item.quantity, price: item.price })),
-                totalPrice: totalPrice
-            };
-
-            console.log('Order Data to Submit:', orderData);
-
-            fetch('/orders/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(orderData),
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Failed to save the order');
-                }
-            })
-            .then(data => {
-                cart = [];
-                totalPrice = 0;
-                displayCart();
-            })
-            .catch(error => {
-                console.error('Error saving order:', error);
-            });
+        if (itemInCart) {
+            itemInCart.quantity += quantity;
+            itemInCart.totalPrice += price * quantity;
+        } else {
+            cart.push({ item, price, quantity, totalPrice: price * quantity });
         }
 
-function openCategory(category) {
-    let sections = document.querySelectorAll('.menu-section');
-    sections.forEach(section => section.classList.remove('active'));
-    document.getElementById(category).classList.add('active');
-    
-    // Update the URL to reflect the current category (without reloading)
-    history.replaceState(null, '', `menu.html?category=${category}`);
-}
+        totalPrice += price * quantity;
+        displayCart();
+    }
 
-// On page load, check for the query parameter and open the correct section
-document.addEventListener('DOMContentLoaded', function() {
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get('category') || 'entrees';
-    openCategory(category);
-});
+    function displayCart() {
+        let cartItems = document.getElementById('cart-items');
+        let totalElement = document.getElementById('total-price');
+        cartItems.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p>No items in cart.</p>';
+        } else {
+            cart.forEach((cartItem, index) => {
+                let itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <p>${cartItem.item} x ${cartItem.quantity} - $${cartItem.totalPrice.toFixed(2)}</p>
+                    <div class="cart-buttons">
+                        <button onclick="increaseQuantity(${index})">+</button>
+                        <button onclick="decreaseQuantity(${index})">-</button>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    </div>`;
+                cartItems.appendChild(itemElement);
+            });
+        }
+        totalElement.innerHTML = `<p>Total: $${totalPrice.toFixed(2)}</p>`;
+    }
+
+    function increaseQuantity(index) {
+        const cartItem = cart[index];
+        cartItem.quantity += 1;
+        cartItem.totalPrice += cartItem.price;
+        totalPrice += cartItem.price;
+        displayCart();
+    }
+
+    function decreaseQuantity(index) {
+        const cartItem = cart[index];
+        if (cartItem.quantity > 1) {
+            cartItem.quantity -= 1;
+            cartItem.totalPrice -= cartItem.price;
+            totalPrice -= cartItem.price;
+            displayCart();
+        } else {
+            removeFromCart(index);
+        }
+    }
+
+    function removeFromCart(index) {
+        const cartItem = cart[index];
+        totalPrice -= cartItem.totalPrice;
+        cart.splice(index, 1);
+        displayCart();
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'Your cart is empty!';
+            responseDiv.classList.remove('success');
+            responseDiv.classList.add('error');
+        } else {
+            saveOrderToDatabase();
+        }
+    }
 
 
+    function saveOrderToDatabase() {
+        const orderData = {
+            items: cart.map(item => ({ name: item.item, quantity: item.quantity, price: item.price })),
+            totalPrice: totalPrice
+        };
+
+        fetch('/orders/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.text().then(errorText => {
+                    console.error('Error response text:', errorText);
+                    throw new Error('Failed to save the order');
+                });
+            }
+        })
+        .then(data => {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'Order placed successfully!';
+            responseDiv.classList.remove('error');
+            responseDiv.classList.add('success');
+            cart = [];
+            totalPrice = 0;
+            displayCart();
+        })
+        .catch(error => {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'An error occurred while placing your order. Please try again.';
+            responseDiv.classList.remove('success');
+            responseDiv.classList.add('error');
+        });
+    }
+
+
+    function openCategory(category) {
+        // Hide all sections
+        document.querySelectorAll('.menu-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        const selectedSection = document.getElementById(category);
+        if (selectedSection) {
+            selectedSection.style.display = 'block';
+        }
+    }
+
+    // On page load, check for the query parameter and open the correct section
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category') || 'entrees';
+
+        const categories = ["entrees", "mains", "desserts", "non-alcoholic", "alcoholic", "kids"];
+
+        fetch('/menu/all')
+            .then(response => response.json())
+            .then(menuItems => {
+                categories.forEach(category => {
+                    const section = document.getElementById(category).querySelector('.menu-grid');
+                    const items = menuItems.filter(item => item.category.toLowerCase() === category);
+
+                    items.forEach(item => {
+                        const itemElement = document.createElement('div');
+                        itemElement.classList.add('menu-item');
+                        itemElement.innerHTML = `
+                            <img src="${item.imageUrl}" alt="${item.name}">
+                            <h5>${item.name}</h5>
+                            <p class="price">$${item.price.toFixed(2)}</p>
+                            <label for="quantity-${item._id}">Quantity:</label>
+                            <input type="number" id="quantity-${item._id}" value="1" min="1">
+                            <button onclick="addToCart('${item.name}', ${item.price}, document.getElementById('quantity-${item._id}').value)">Add to Cart</button>
+                        `;
+                        section.appendChild(itemElement);
+                    });
+                });
+            })
+            .catch(error => console.error('Error fetching menu items:', error));
+
+        openCategory(category);
+    });
 </script>
 
 </body>

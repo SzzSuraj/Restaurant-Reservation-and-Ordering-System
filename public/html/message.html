@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Notification Message</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #5a3e36;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #1e8449;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set Notification Message</h1>
+    <form id="message-form">
+        <textarea id="message-input" placeholder="Type your message here..."></textarea>
+        <div id="validation-message" class="error"></div>
+        <button type="submit">Save Message</button>
+    </form>
+    <div id="response-message"></div>
+
+    <script>
+        document.getElementById('message-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const message = document.getElementById('message-input').value.trim();
+            const validationMessage = document.getElementById('validation-message');
+            const responseMessage = document.getElementById('response-message');
+
+            // Clear previous messages
+            validationMessage.innerText = '';
+            responseMessage.innerText = '';
+
+            if (!message) {
+                validationMessage.innerText = 'Please enter a valid message!';
+                return;
+            }
+
+            fetch('/api/save-message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                if (data.error) {
+                    responseMessage.className = 'error';
+                    responseMessage.innerText = data.error;
+                } else {
+                    responseMessage.className = 'success';
+                    responseMessage.innerText = 'Message saved successfully!';
+                    document.getElementById('message-input').value = '';
+                }
+            })
+            .catch(error => {
+                console.error('Error saving message:', error);
+                responseMessage.className = 'error';
+                responseMessage.innerText = 'An error occurred while saving the message.';
+            });
+        });
+    </script>
+</body>
+</html>

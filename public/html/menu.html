@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Fusion Bistro - Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+<style>
+#response {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+#response.success {
+    background: #e0ffe0;
+    border: 1px solid #c3ffc3;
+    color: #333;
+}
+
+#response.error {
+    background: #ffe0e0;
+    border: 1px solid #ffc3c3;
+    color: #333;
+}
+
+</style>
+</head>
+<body class="menu-page">
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="menu.html">Menu</a>
+                    <ul class="dropdown-content">
+                        <li><a href="menu.html?category=entrees">Entrées</a></li>
+                        <li><a href="menu.html?category=mains">Mains</a></li>
+                        <li><a href="menu.html?category=desserts">Desserts</a></li>
+                        <li><a href="menu.html?category=non-alcoholic">Non-Alcoholic Beverages</a></li>
+                        <li><a href="menu.html?category=alcoholic">Alcoholic Beverages</a></li>
+                        <li><a href="menu.html?category=kids">Kids Menu</a></li>
+                    </ul>
+                </li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#">Login</a>
+                    <ul class="dropdown-content">
+                        <li><a href="employee-login.html">Employee Login</a></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <h1>Our Menu</h1>
+    </header>
+
+    <!-- Category Navigation -->
+    <div class="category-navigation">
+        <button onclick="openCategory('entrees')">Entrées</button>
+        <button onclick="openCategory('mains')">Mains</button>
+        <button onclick="openCategory('desserts')">Desserts</button>
+        <button onclick="openCategory('non-alcoholic')">Non-Alcoholic Beverages</button>
+        <button onclick="openCategory('alcoholic')">Alcoholic Beverages</button>
+        <button onclick="openCategory('kids')">Kids Menu</button>
+    </div>
+
+    <!-- Main Content with Menu and Cart -->
+    <div class="menu-content">
+        <!-- Menu Sections -->
+        <section class="menu-section" id="entrees">
+            <h2>Entrées</h2>
+            <div class="menu-grid"></div>
+        </section>
+        <section class="menu-section" id="mains">
+            <h2>Mains</h2>
+            <div class="menu-grid"></div>
+        </section>
+        <section class="menu-section" id="desserts">
+            <h2>Desserts</h2>
+            <div class="menu-grid"></div>
+        </section>
+        <section class="menu-section" id="non-alcoholic">
+            <h2>Non-Alcoholic Beverages</h2>
+            <div class="menu-grid"></div>
+        </section>
+        <section class="menu-section" id="alcoholic">
+            <h2>Alcoholic Beverages</h2>
+            <div class="menu-grid"></div>
+        </section>
+        <section class="menu-section" id="kids">
+            <h2>Kids Menu</h2>
+            <div class="menu-grid"></div>
+        </section>
+
+        <!-- Cart Section -->
+        <aside class="cart-section">
+            <h4>Your Order</h4>
+            <div id="cart-items">
+                <p>No items in cart.</p>
+            </div>
+            <div id="total-price">
+                <p>Total: $0.00</p>
+            </div>
+            <button id="checkout-btn" onclick="checkout()">Checkout</button>
+            <div id="response"></div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>MOUNTAIN FUSION BISTRO</h3>
+                <p>We are available for function and event enquiries at all times.</p>
+                <div class="footer-social">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://goo.gl/maps/your-map-link" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>OUR MENUS</h3>
+                <ul class="footer-menu">
+                    <li><a href="menu.html?category=entrees">Entrées</a></li>
+                    <li><a href="menu.html?category=mains">Mains</a></li>
+                    <li><a href="menu.html?category=desserts">Desserts</a></li>
+                    <li><a href="menu.html?category=non-alcoholic">Non-Alcoholic Beverages</a></li>
+                    <li><a href="menu.html?category=alcoholic">Alcoholic Beverages</a></li>
+                    <li><a href="menu.html?category=kids">Kids Menu</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>CONTACT US</h3>
+                <p>Phone: <a href="tel:+61234567890">+61 (234) 567-890</a></p>
+                <p>Email: <a href="mailto:info@mountainfusionbistro.com">info@mountainfusionbistro.com</a></p>
+                <p>Address: <a href="https://maps.google.com">123 Bistro Lane, Food City, FC 45678</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024. All rights reserved by Mountain Fusion Bistro.</p>
+        </div>
+    </footer>
+
+<script>
+    let cart = [];
+    let totalPrice = 0;
+
+    function addToCart(item, price, quantity) {
+        quantity = parseInt(quantity);
+        let itemInCart = cart.find(cartItem => cartItem.item === item);
+
+        if (itemInCart) {
+            itemInCart.quantity += quantity;
+            itemInCart.totalPrice += price * quantity;
+        } else {
+            cart.push({ item, price, quantity, totalPrice: price * quantity });
+        }
+
+        totalPrice += price * quantity;
+        displayCart();
+    }
+
+    function displayCart() {
+        let cartItems = document.getElementById('cart-items');
+        let totalElement = document.getElementById('total-price');
+        cartItems.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<p>No items in cart.</p>';
+        } else {
+            cart.forEach((cartItem, index) => {
+                let itemElement = document.createElement('div');
+                itemElement.innerHTML = `
+                    <p>${cartItem.item} x ${cartItem.quantity} - $${cartItem.totalPrice.toFixed(2)}</p>
+                    <div class="cart-buttons">
+                        <button onclick="increaseQuantity(${index})">+</button>
+                        <button onclick="decreaseQuantity(${index})">-</button>
+                        <button onclick="removeFromCart(${index})">Remove</button>
+                    </div>`;
+                cartItems.appendChild(itemElement);
+            });
+        }
+        totalElement.innerHTML = `<p>Total: $${totalPrice.toFixed(2)}</p>`;
+    }
+
+    function increaseQuantity(index) {
+        const cartItem = cart[index];
+        cartItem.quantity += 1;
+        cartItem.totalPrice += cartItem.price;
+        totalPrice += cartItem.price;
+        displayCart();
+    }
+
+    function decreaseQuantity(index) {
+        const cartItem = cart[index];
+        if (cartItem.quantity > 1) {
+            cartItem.quantity -= 1;
+            cartItem.totalPrice -= cartItem.price;
+            totalPrice -= cartItem.price;
+            displayCart();
+        } else {
+            removeFromCart(index);
+        }
+    }
+
+    function removeFromCart(index) {
+        const cartItem = cart[index];
+        totalPrice -= cartItem.totalPrice;
+        cart.splice(index, 1);
+        displayCart();
+    }
+
+    function checkout() {
+        if (cart.length === 0) {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'Your cart is empty!';
+            responseDiv.classList.remove('success');
+            responseDiv.classList.add('error');
+        } else {
+            saveOrderToDatabase();
+        }
+    }
+
+
+    function saveOrderToDatabase() {
+        const orderData = {
+            items: cart.map(item => ({ name: item.item, quantity: item.quantity, price: item.price })),
+            totalPrice: totalPrice
+        };
+
+        fetch('/orders/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData),
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                return response.text().then(errorText => {
+                    console.error('Error response text:', errorText);
+                    throw new Error('Failed to save the order');
+                });
+            }
+        })
+        .then(data => {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'Order placed successfully!';
+            responseDiv.classList.remove('error');
+            responseDiv.classList.add('success');
+            cart = [];
+            totalPrice = 0;
+            displayCart();
+        })
+        .catch(error => {
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'An error occurred while placing your order. Please try again.';
+            responseDiv.classList.remove('success');
+            responseDiv.classList.add('error');
+        });
+    }
+
+
+    function openCategory(category) {
+        // Hide all sections
+        document.querySelectorAll('.menu-section').forEach(section => {
+            section.style.display = 'none';
+        });
+
+        // Show the selected section
+        const selectedSection = document.getElementById(category);
+        if (selectedSection) {
+            selectedSection.style.display = 'block';
+        }
+    }
+
+    // On page load, check for the query parameter and open the correct section
+    document.addEventListener('DOMContentLoaded', function() {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category') || 'entrees';
+
+        const categories = ["entrees", "mains", "desserts", "non-alcoholic", "alcoholic", "kids"];
+
+        fetch('/menu/all')
+            .then(response => response.json())
+            .then(menuItems => {
+                categories.forEach(category => {
+                    const section = document.getElementById(category).querySelector('.menu-grid');
+                    const items = menuItems.filter(item => item.category.toLowerCase() === category);
+
+                    items.forEach(item => {
+                        const currentTime = new Date();
+                        const isDiscounted = item.discountPercentage > 0 && new Date(item.discountEndTime) > currentTime;
+                        const itemElement = document.createElement('div');
+                        itemElement.classList.add('menu-item');
+                        itemElement.innerHTML = `
+                            <img src="${item.imageUrl}" alt="${item.name}">
+                            <h5>${item.name}</h5>
+                            <p class="price">
+                                ${isDiscounted 
+                                    ? `<span style="color:red; font-weight:bold;">Discounted ${item.discountPercentage}%</span> 
+                                        <br><strike>$${(item.price / (1 - item.discountPercentage / 100)).toFixed(2)}</strike> $${item.price.toFixed(2)}`
+                                    : `$${item.price.toFixed(2)}`
+                                }
+                            </p>
+                            ${isDiscounted ? `<p style="color:green;">Discount active for: ${Math.ceil((new Date(item.discountEndTime) - currentTime) / (1000 * 60 * 60))} hours</p>` : ''}
+                            <label for="quantity-${item._id}">Quantity:</label>
+                            <input type="number" id="quantity-${item._id}" value="1" min="1" style="width: 50px; margin-right: 10px;">
+                            <button onclick="addToCart('${item.name}', ${item.price}, 1)">Add to Cart</button>
+                        `;
+                        section.appendChild(itemElement);
+                    });
+                });
+            })
+            .catch(error => console.error('Error fetching menu items:', error));
+
+        openCategory(category);
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!sessionStorage.getItem('messageDisplayed')) {
+            fetch('/api/get-message')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        const popup = document.createElement('div');
+                        popup.style.position = 'fixed';
+                        popup.style.top = '0';
+                        popup.style.left = '0';
+                        popup.style.width = '100%';
+                        popup.style.height = '100%';
+                        popup.style.backgroundColor = 'rgba(0, 0, 0, 0.85)'; /* Dark background */
+                        popup.style.color = 'white';
+                        popup.style.display = 'flex';
+                        popup.style.justifyContent = 'center';
+                        popup.style.alignItems = 'center';
+                        popup.style.textAlign = 'center';
+                        popup.style.zIndex = '1000';
+
+                        popup.innerHTML = `
+                            <div style="
+                                background-color: rgba(255, 255, 255, 0.1);
+                                padding: 20px;
+                                border-radius: 10px;
+                                max-width: 80%;
+                                font-size: 2rem;
+                                line-height: 1.5;
+                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+                            ">
+                                <p>${data.message}</p>
+                                <button onclick="this.parentElement.parentElement.remove()" style="
+                                    margin-top: 20px;
+                                    background-color: #27ae60;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    font-size: 1rem;
+                                    border-radius: 5px;
+                                    cursor: pointer;
+                                ">Close</button>
+                            </div>
+                        `;
+
+                        document.body.appendChild(popup);
+                        sessionStorage.setItem('messageDisplayed', 'true');
+                    }
+                })
+                .catch(error => console.error('Error fetching message:', error));
+        }
+    });
+</script>
+
+
+</body>
+</html>

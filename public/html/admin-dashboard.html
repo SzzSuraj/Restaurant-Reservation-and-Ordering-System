@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #e9d5b8; /* Light tan background */
+            color: #333;
+        }
+    
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #5a3825; /* Dark brown */
+            color: #fff; /* White text */
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+    
+        .sidebar h2 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #e1b382; /* Accent tan */
+        }
+    
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+    
+        .sidebar ul li a {
+            color: #f4e1c1; /* Lighter tan text */
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    
+        .sidebar ul li a:hover {
+            background-color: #744831; /* Slightly lighter brown */
+        }
+    
+        /* Main Content */
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+    
+        .main-content h1 {
+            color: #5a3825; /* Dark brown heading */
+            font-size: 2rem;
+        }
+    
+        /* Dashboard Cards */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+    
+        .dashboard-card {
+            background-color: #f2e6d8; /* Light tan */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #5a3825; /* Dark brown text */
+        }
+    
+        .dashboard-card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+    
+        .dashboard-card a {
+            text-decoration: none;
+            color: #fff; /* White button text */
+            background-color: #5a3825; /* Dark brown */
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    
+        .dashboard-card a:hover {
+            background-color: #744831; /* Lighter brown */
+        }
+    
+        .dashboard-card i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #e1b382; /* Accent tan */
+        }
+    
+        /* Reports Section */
+        .report-section {
+            margin-top: 40px;
+        }
+    
+        .report-section h2 {
+            color: #5a3825; /* Dark brown */
+            margin-bottom: 20px;
+        }
+    
+        .report-card {
+            background-color: #f2e6d8; /* Light tan */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+    
+        /* Buttons */
+        button {
+            background-color: #5a3825; /* Dark brown */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #744831; /* Lighter brown */
+        }
+    </style>
+    
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><a href="reset-password.html">Change Password</a></li>
+            <li><a href="add-menu.html">Add Menu Item</a></li>
+            <li><a href="employee-registration.html">Create User</a></li>
+            <li><a href="reservations-list.html">See Reservations</a></li>
+            <li><a href="orders.html">Orders This Hour</a></li>
+            <li><a href="reviews-list.html">Customer Reviews</a></li>
+            <li><a href="messages.html">Messages</a></li>
+            <li><a href="message.html">Announcements</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Admin Dashboard</h1>
+
+        <div class="dashboard-container">
+            <!-- Cards -->
+            <div class="dashboard-card">
+                <i class="fas fa-user-lock"></i>
+                <h2>Change Password</h2>
+                <a href="reset-password.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-utensils"></i>
+                <h2>Add Menu Item</h2>
+                <a href="add-menu.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-user-plus"></i>
+                <h2>Create User</h2>
+                <a href="employee-registration.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h2>See Reservations</h2>
+                <a href="reservations-list.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-shopping-cart"></i>
+                <h2>Orders This Hour</h2>
+                <a href="orders.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-star"></i>
+                <h2>Customer Reviews</h2>
+                <a href="reviews-list.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-envelope"></i>
+                <h2>Messages</h2>
+                <a href="messages.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-bullhorn"></i>
+                <h2>Announcement</h2>
+                <a href="message.html">Go</a>
+            </div>
+        </div>
+
+        <!-- Reports Section -->
+        <div class="report-section">
+            <h2>Orders and Reservation</h2>
+            <div class="report-card">
+                <h3>Orders</h3>
+                <p>View the orders.</p>
+                <a href="orders.html">View Orders</a>
+            </div>
+            <div class="report-card">
+                <h3>Reservations</h3>
+                <p>View the reservations</p>
+                <a href="reservations-list.html">View Reservations</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

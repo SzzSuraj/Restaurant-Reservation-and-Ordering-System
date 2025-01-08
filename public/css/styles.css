@@ -1063,7 +1063,97 @@ h5 {
     color: #ff0000; /* Red for validation hints */
     margin-top: 0.25rem;
 }
+/*
+/* Notification List Styles */
+.notification-list {
+    width: 80%;
+    
+    margin: 20px auto;
+    list-style: none;
+    padding: 0;
+}
 
+.notification-item {
+    background-color: #5e3719;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification-item a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.notification-item a:hover {
+    color: #ffda8b;
+}
+
+.notification-item:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Styles */
+#successModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#successModal .modal-content {
+    text-align: center;
+}
+
+#successModal p {
+    font-size: 1.2rem;
+    color: #5E3719;
+    margin-bottom: 20px;
+}
+
+#successModal .modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #5e3719;
+}
+
+#successModal .close-btn {
+    padding: 0.8rem 2rem;
+    background-color: #5e3719;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#successModal .close-btn:hover {
+    background-color: #8D542C;
+}
+*/
 /* Button Styles */
 .reviews-page .button-container {
     margin-top: 2rem;

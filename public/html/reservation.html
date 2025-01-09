@@ -49,6 +49,15 @@
         #successModal .close-btn:hover {
             background-color: #8D542C;
         }
+
+        .checkbox-group {
+  display: inline-flex;        /* Keep label and checkbox on the same line */
+  align-items: center;         /* Vertically align them */
+  gap: 8px;                    /* Space between text and checkbox; adjust as needed */
+  white-space: nowrap;         /* Prevent wrapping of text */
+}
+
+
     </style>
 </head>
 <body class="reservation-page">
@@ -132,7 +141,11 @@
                     <option value="Corner">In the Corner</option>
                     <option value="Outdoor">Outdoor Seating</option>
                 </select>
-            </div>
+                <div class="form-group checkbox-group">
+                    <label for="reminderOptIn">Send me a reminder notification</label>
+                    <input type="checkbox" id="reminderOptIn" name="reminderOptIn">
+                  </div>                               
+                  
             
             <div class="button-container">
                 <button type="submit">Submit</button>
@@ -140,6 +153,8 @@
         </form>
     </section>
 
+    
+    
     <!-- Modal Popup for Success -->
     <div id="successModal" class="modal">
         <div class="modal-content">

@@ -6,6 +6,10 @@ const session = require('express-session');
 const path = require('path'); // Import the path module
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const Order = require('../models/Order');
+const Reservation = require('../models/Reservation');
+const { generatePDF, generateCSV } = require('../utils/reportExporter');
+
 
 // Initialize session middleware
 router.use(session({
@@ -168,6 +172,125 @@ router.post('/reset/:token', async (req, res) => {
   } catch (error) {
       console.error('Error while updating password:', error);
       res.status(500).json({ success: false, message: 'Server Error' });
+  }
+});
+
+
+// Fetch Reports
+router.get('/reports', async (req, res) => {
+    const { startDate, endDate } = req.query;
+
+    try {
+        const start = startDate ? new Date(startDate) : new Date('1970-01-01');
+        const end = endDate ? new Date(endDate) : new Date();
+
+        // Fetch orders and reservations
+        const orders = await Order.aggregate([
+            { $match: { createdAt: { $gte: start, $lte: end } } },
+            {
+                $group: {
+                    _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
+                    totalOrders: { $sum: 1 },
+                    totalRevenue: { $sum: '$totalPrice' },
+                },
+            },
+        ]);
+
+        const reservations = await Reservation.aggregate([
+            { $match: { reservationDate: { $gte: start, $lte: end } } },
+            {
+                $group: {
+                    _id: { $dateToString: { format: '%Y-%m-%d', date: '$reservationDate' } },
+                    totalReservations: { $sum: 1 },
+                },
+            },
+        ]);
+
+        // Combine Data
+        const reports = [];
+        const ordersMap = Object.fromEntries(orders.map(o => [o._id, o]));
+        const reservationsMap = Object.fromEntries(reservations.map(r => [r._id, r]));
+
+        const allDates = new Set([...Object.keys(ordersMap), ...Object.keys(reservationsMap)]);
+
+        for (const date of allDates) {
+            reports.push({
+                date,
+                totalOrders: ordersMap[date]?.totalOrders || 0,
+                totalReservations: reservationsMap[date]?.totalReservations || 0,
+                revenue: ordersMap[date]?.totalRevenue || 0,
+            });
+        }
+
+        res.json(reports.sort((a, b) => new Date(a.date) - new Date(b.date)));
+    } catch (error) {
+        console.error('Error fetching reports:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch reports' });
+    }
+});
+
+// Export Reports
+router.get('/reports/export', async (req, res) => {
+  const { format, startDate, endDate } = req.query;
+
+  try {
+      const start = startDate ? new Date(startDate) : new Date('1970-01-01');
+      const end = endDate ? new Date(endDate) : new Date();
+
+      // Fetch orders and reservations
+      const orders = await Order.aggregate([
+          { $match: { createdAt: { $gte: start, $lte: end } } },
+          {
+              $group: {
+                  _id: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
+                  totalOrders: { $sum: 1 },
+                  totalRevenue: { $sum: '$totalPrice' },
+              },
+          },
+      ]);
+
+      const reservations = await Reservation.aggregate([
+          { $match: { reservationDate: { $gte: start, $lte: end } } },
+          {
+              $group: {
+                  _id: { $dateToString: { format: '%Y-%m-%d', date: '$reservationDate' } },
+                  totalReservations: { $sum: 1 },
+              },
+          },
+      ]);
+
+      const reports = [];
+      const ordersMap = Object.fromEntries(orders.map(o => [o._id, o]));
+      const reservationsMap = Object.fromEntries(reservations.map(r => [r._id, r]));
+
+      const allDates = new Set([...Object.keys(ordersMap), ...Object.keys(reservationsMap)]);
+
+      for (const date of allDates) {
+          reports.push({
+              date,
+              totalOrders: ordersMap[date]?.totalOrders || 0,
+              totalReservations: reservationsMap[date]?.totalReservations || 0,
+              revenue: ordersMap[date]?.totalRevenue || 0,
+          });
+      }
+
+      // Export based on format
+      if (format === 'pdf') {
+          const pdfBuffer = await generatePDF(reports);
+          res.setHeader('Content-Disposition', 'attachment; filename="daily_reports.pdf"');
+          res.contentType('application/pdf');
+          res.send(pdfBuffer);
+      } else if (format === 'csv') {
+          const csvData = generateCSV(reports);
+          res.setHeader('Content-Disposition', 'attachment; filename="daily_reports.csv"');
+          res.contentType('text/csv');
+          res.send(csvData);
+      } else {
+          res.status(400).send('Invalid format');
+      }
+  } catch (error) {
+      console.error('Error exporting reports:', error);
+      res.status(500).send('Failed to export reports');
   }
 });
 

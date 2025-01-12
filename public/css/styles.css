@@ -1092,3 +1092,129 @@ h5 {
     color: #666;
     text-align: left;
 }
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #e2ccac;
+    margin: 0;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 1024px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-section {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .homepage .info-card {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .homepage .info-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .menu-page .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .menu-page .cart-section {
+        width: 100%;
+        margin: 1rem 0;
+        border: none;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    .homepage .hero {
+        height: 60vh;
+    }
+
+    .navbar {
+        gap: 0.5rem;
+    }
+
+    .menu-page .menu-item {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .admin-login-page .login-container,
+    .employee-login-page .login-container {
+        flex-direction: column;
+    }
+
+    .reviews-page .review-card {
+        width: 150px;
+        height: 150px;
+    }
+
+    .footer-container {
+        text-align: center;
+    }
+}
+
+/* Specific Mobile Adjustments */
+@media (max-width: 480px) {
+    .header {
+        padding: 0.5rem 0;
+    }
+
+    .navbar {
+        gap: 0.25rem;
+    }
+
+    .footer-container {
+        gap: 1rem;
+    }
+
+    .menu-page .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .homepage .info-content h3,
+    .homepage .reviews-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .homepage .reviews-slider {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-page .contact-form,
+    .reservation-page .reservation-form {
+        padding: 1rem;
+    }
+}

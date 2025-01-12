@@ -7,13 +7,12 @@ require('dotenv').config();
 const session = require('express-session');
 const messageRoutes = require('./routes/message');
 
-
 // Middleware for parsing form data and JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/BistroDB')
+mongoose.connect('mongodb://localhost:27017/BistroDB', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error('Error connecting to MongoDB:', error));
 
@@ -23,8 +22,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Serve static HTML files from the 'html' directory
 app.use('/html', express.static(path.join(__dirname, 'html')));
 
+// Serve static uploaded files from the 'uploads' directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+// Use body-parser middleware
 app.use(bodyParser.json());
 
 // Session configuration
@@ -35,23 +36,24 @@ app.use(session({
   cookie: { secure: false } // Use secure: true in production with HTTPS
 }));
 
-// Routes
-const adminRoutes = require('./routes/admin');
-const employeeRoutes = require('./routes/employee');
-const contactRoutes = require('./routes/contact');
-const reservationRoutes = require('./routes/reservation');
-const reviewRoutes = require('./routes/review');
-const menuRoutes = require('./routes/menu');
-const orderRoutes = require('./routes/order');
+// Import Routes
+const adminRoutes = require('./routes/admin');        // Admin functionalities
+const employeeRoutes = require('./routes/employee');  // Employee functionalities
+const contactRoutes = require('./routes/contact');    // Contact form
+const reservationRoutes = require('./routes/reservation'); // Reservations
+const reviewRoutes = require('./routes/review');      // Reviews
+const menuRoutes = require('./routes/menu');          // Menu management
+const orderRoutes = require('./routes/order');        // Order management
 
-app.use('/admin', adminRoutes);        // Route for admin
-app.use('/employee', employeeRoutes); // Route for employee functionalities
-app.use('/contact', contactRoutes);   // Route for contact form
-app.use('/reservation', reservationRoutes); // Route for reservations
-app.use('/reviews', reviewRoutes);    // Route for reviews
-app.use('/menu', menuRoutes);         // Route for menu
-app.use('/orders', orderRoutes);      // Route for orders
-app.use('/api', messageRoutes);
+// Use Routes
+app.use('/admin', adminRoutes);        // Routes for admin functionalities
+app.use('/employee', employeeRoutes); // Routes for employee functionalities
+app.use('/contact', contactRoutes);   // Routes for contact form
+app.use('/reservation', reservationRoutes); // Routes for reservation system
+app.use('/reviews', reviewRoutes);    // Routes for customer reviews
+app.use('/menu', menuRoutes);         // Routes for menu management
+app.use('/orders', orderRoutes);      // Routes for order management
+app.use('/api', messageRoutes);       // Routes for messages and announcements
 
 // Listen on Port
 const PORT = process.env.PORT || 3000;

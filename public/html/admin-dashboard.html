@@ -140,6 +140,38 @@
         button:hover {
             background-color: #744831; /* Lighter brown */
         }
+
+
+
+        .charts-section {
+  margin-top: 40px;
+}
+
+.charts-section h2 {
+  color: #5a3825;
+  margin-bottom: 20px;
+}
+
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.chart-item {
+  flex: 1;
+  max-width: 30%; /* Ensures charts aren't too wide */
+  height: 300px;  /* Fixed height for consistency */
+  position: relative;
+}
+
+/* Ensure canvases fill their containers */
+.chart-item canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
     </style>
     
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -222,6 +254,87 @@
                 <a href="reservations-list.html">View Reservations</a>
             </div>
         </div>
+
+        <!-- Charts Section -->
+<div class="charts-section">
+    <h2>Customer Activity Trends</h2>
+    <div class="charts-container">
+      <div class="chart-item">
+        <canvas id="pieChart"></canvas>
+      </div>
+      <div class="chart-item">
+        <canvas id="lineChart"></canvas>
+      </div>
+      <div class="chart-item">
+        <canvas id="barChart"></canvas>
+      </div>
     </div>
+  </div>
+  
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const pieCtx = document.getElementById('pieChart').getContext('2d');
+          const lineCtx = document.getElementById('lineChart').getContext('2d');
+          const barCtx = document.getElementById('barChart').getContext('2d');
+        
+          // Pie Chart: Most Popular 5 Menu Items (dummy data)
+          new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+              labels: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'],
+              datasets: [{
+                data: [1, 1, 1, 1, 1], // Dummy values ensure visibility
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false
+            }
+          });
+        
+          // Line Chart: Sales Over Time (dummy data)
+          new Chart(lineCtx, {
+            type: 'line',
+            data: {
+              labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], // Placeholder labels
+              datasets: [{
+                label: 'Sales',
+                data: [0, 0, 0, 0, 0], // Dummy data
+                borderColor: '#5a3825',
+                backgroundColor: 'rgba(90, 56, 37, 0.1)',
+                fill: true
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false
+            }
+          });
+        
+          // Bar Chart: Peak Hours by Day (dummy data)
+          new Chart(barCtx, {
+            type: 'bar',
+            data: {
+              labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+              datasets: [{
+                label: 'Peak Hours',
+                data: [0, 0, 0, 0, 0, 0, 0], // Dummy data
+                backgroundColor: '#e1b382'
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false
+            }
+          });
+        });
+        </script>
+        
+
 </body>
 </html>

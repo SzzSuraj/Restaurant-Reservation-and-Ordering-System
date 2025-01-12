@@ -49,15 +49,6 @@
         #successModal .close-btn:hover {
             background-color: #8D542C;
         }
-
-        .checkbox-group {
-  display: inline-flex;        /* Keep label and checkbox on the same line */
-  align-items: center;         /* Vertically align them */
-  gap: 8px;                    /* Space between text and checkbox; adjust as needed */
-  white-space: nowrap;         /* Prevent wrapping of text */
-}
-
-
     </style>
 </head>
 <body class="reservation-page">
@@ -97,64 +88,179 @@
         </ul>
     </nav>
     <br>
-    <h1>Make a Reservation</h1>
+    <h1>Kitchen Display System</h1>
 </header>
 
     <!-- Reservation Form -->
     
-    <section class="reservation-section">
+    <section class="kitchen-settings">
+        <div class="menu-page">
+        <div class="menu-grid mt-10 mb-10">
+            <div class="menu-item ">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th colspan="2" class="first-header">VIP Table</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="sub-header">KOT - 5</th>
+                        </tr>
+                        <tr>
+                            <th class="sub-header-column">Item</th>
+                            <th class="sub-header-column">Qty</th>
+                        </tr>
+                        <tr>
+                            <td>Blender </td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>Carlsberg</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="sub-header">KOT - 6</th> 
+                        </tr>
+                        <tr>
+                            <th class="sub-header-column">Item</th>
+                            <th class="sub-header-column">Qty</th>
+                        </tr>
+                        <tr>
+                            <td>Paneer Tikka </td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>VEG</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>chaana chat</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>Honey Chilli Cauliflower</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="menu-item">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th colspan="2" class="first-header">Room</th>
+                      
+                      </tr>
+                     
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="sub-header">KOT - 2</th>   
+                        </tr>
+                        <tr>
+                            <th class="sub-header-column">Item</th>
+                            <th class="sub-header-column">Qty</th>
+                        </tr>
+                        <tr>
+                            <td>444choco bar</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>beer</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="menu-item">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th colspan="2" class="first-header">Take Away</th>
+                      
+                      </tr>
+                     
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="sub-header">KOT - 1</th>   
+                        </tr>
+                        <tr>
+                            <th class="sub-header-column">Item</th>
+                            <th class="sub-header-column">Qty</th>
+                        </tr>
+                        <tr>
+                            <td>Cosmopolitan</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>Grand Margarita</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>Screw Driver</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="menu-item ">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th colspan="2" class="first-header">Corner Table</th>
+                      
+                      </tr>
+                     
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="sub-header">KOT - 3</th>
+                        </tr>
+                        <tr>
+                            <th class="sub-header-column">Item</th>
+                            <th class="sub-header-column">Qty</th>
+                        </tr>
+                        <tr>
+                            <td>Kingfisher</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>Blender</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th colspan="2" class="sub-header">KOT - 4</th>
+                        </tr>
+                        <tr>
+                            <th class="sub-header-column">Item</th>
+                            <th class="sub-header-column">Qty</th>
+                        </tr>
+                        <tr>
+                            <td>Carlsberg</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>Santra</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                        <tr>
+                            <td>Blender</td>
+                            <td class="quantity-center">1</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
 
-        <form action="/reservation/submit" method="POST" class="reservation-form">
-            <div class="form-group">
-                <label for="full-name">Full Name</label>
-                <input type="text" id="full-name" name="fullName" required pattern="[A-Za-z\s]+" title="Only alphabetic characters and spaces are allowed">
-            </div>            
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email address">
-            </div>
-            <div class="form-group">
-                <label for="mobile-number">Mobile Number</label>
-                <input type="tel" id="mobile-number" name="mobileNumber" required pattern="\d{10}" title="Mobile number must be exactly 10 digits" placeholder="Enter your 10-digit mobile number">
-                <small class="hint">Mobile number must be exactly 10 digits</small>
-            </div>           
-            <div class="form-group">
-                <label for="number-people">Number of People</label>
-                <input type="number" id="number-people" name="numberOfPeople" min="1" max="20" required placeholder="Enter number of people">
-            </div>
-            <div class="form-group">
-                <label for="reservation-date">Reservation Date</label>
-                <input type="date" id="reservation-date" name="reservationDate" required>
-            </div>
-            <div class="form-group">
-                <label for="reservation-time">Reservation Time</label>
-                <select id="reservation-time" name="reservationTime" required>
-                    <!-- Time options will be populated by JavaScript -->
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="table-location">Table Location</label>
-                <select id="table-location" name="tableLocation" required>
-                    <option value="" disabled selected hidden>Select a table location</option> <!-- Faded hint -->
-                    <option value="Near-Window">Near the Window</option>
-                    <option value="Near-Bar">Near the Bar</option>
-                    <option value="Corner">In the Corner</option>
-                    <option value="Outdoor">Outdoor Seating</option>
-                </select>
-                <div class="form-group checkbox-group">
-                    <label for="reminderOptIn">Send me a reminder notification</label>
-                    <input type="checkbox" id="reminderOptIn" name="reminderOptIn">
-                  </div>                               
-                  
-            
-            <div class="button-container">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
+    </div>
     </section>
 
-    
-    
     <!-- Modal Popup for Success -->
     <div id="successModal" class="modal">
         <div class="modal-content">
@@ -312,59 +418,6 @@
         }
     });
 
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        if (!sessionStorage.getItem('messageDisplayed')) {
-            fetch('/api/get-message')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        const popup = document.createElement('div');
-                        popup.style.position = 'fixed';
-                        popup.style.top = '0';
-                        popup.style.left = '0';
-                        popup.style.width = '100%';
-                        popup.style.height = '100%';
-                        popup.style.backgroundColor = 'rgba(0, 0, 0, 0.85)'; /* Dark background */
-                        popup.style.color = 'white';
-                        popup.style.display = 'flex';
-                        popup.style.justifyContent = 'center';
-                        popup.style.alignItems = 'center';
-                        popup.style.textAlign = 'center';
-                        popup.style.zIndex = '1000';
-
-                        popup.innerHTML = `
-                            <div style="
-                                background-color: rgba(255, 255, 255, 0.1);
-                                padding: 20px;
-                                border-radius: 10px;
-                                max-width: 80%;
-                                font-size: 2rem;
-                                line-height: 1.5;
-                                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-                            ">
-                                <p>${data.message}</p>
-                                <button onclick="this.parentElement.parentElement.remove()" style="
-                                    margin-top: 20px;
-                                    background-color: #27ae60;
-                                    color: white;
-                                    border: none;
-                                    padding: 10px 20px;
-                                    font-size: 1rem;
-                                    border-radius: 5px;
-                                    cursor: pointer;
-                                ">Close</button>
-                            </div>
-                        `;
-
-                        document.body.appendChild(popup);
-                        sessionStorage.setItem('messageDisplayed', 'true');
-                    }
-                })
-                .catch(error => console.error('Error fetching message:', error));
-        }
-    });
 </script>
 
 </body>

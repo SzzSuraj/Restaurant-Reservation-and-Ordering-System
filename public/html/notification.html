@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Fusion Bistro - Reservation</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/plugins/dataTables/datatables.min.css"/>
+    
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <style>
+        /* Modal Styles */
+        #successModal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #successModal .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #successModal p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #2B1A1D;
+        }
+
+        #successModal .close-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: #5E3719;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #successModal .close-btn:hover {
+            background-color: #8D542C;
+        }
+    </style>
+</head>
+<body class="reservation-page">
+
+    <!-- Header -->
+<header class="header">
+    <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="index.html">
+                <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
+            </a>
+        </div>
+        <!-- Navigation Links with Dropdown -->
+        <ul class="nav-links">
+            <li class="dropdown">
+                <a href="menu.html?category=entrees">Menu</a>
+                <ul class="dropdown-content">
+                    <li><a href="menu.html?category=entrees">Entrées</a></li>
+                    <li><a href="menu.html?category=mains">Mains</a></li>
+                    <li><a href="menu.html?category=desserts">Desserts</a></li>
+                    <li><a href="menu.html?category=non-alcoholic">Non-Alcoholic Beverages</a></li>
+                    <li><a href="menu.html?category=alcoholic">Alcoholic Beverages</a></li>
+                    <li><a href="menu.html?category=kids">Kids Menu</a></li>
+                </ul>
+            </li> 
+            <li><a href="reservation.html">Reservation</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="dropdown">
+                <a href="#">Login</a>
+                <ul class="dropdown-content">
+                    <li><a href="employee-login.html">Employee Login</a></li>
+                    <li><a href="admin-login.html">Admin Login</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <br>
+    <h1>Notification</h1>
+</header>
+
+    <!-- Reservation Form -->
+    
+    <section class="reservation-section section-container">
+      
+        <!-- Notification List -->
+        <ul class="notification-list" id="notificationList">
+            <li class="notification-item" id="newOrderNotification">
+                A new order has been placed! <a href="order-details.html">View Details</a>
+            </li>
+            <li class="notification-item" id="reservationChangeNotification">
+                Your table reservation has been updated! <a href="reservation-details.html">View Details</a>
+            </li>
+            <li class="notification-item" id="orderStatusNotification">
+                Your order status has been updated! <a href="order-status.html">Check Status</a>
+            </li>
+        </ul>
+        <div class="no-notifications" id="noNotificationsMessage" style="display: none; text-align: center;font-size: 30px;color: peru;">
+            No notifications found.
+        </div>
+        <!-- Modal Popup for Success -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <h2>Reservation/Order Update</h2>
+                <p>Your reservation or order has been successfully updated!</p>
+                <button class="close-btn" id="closeModal">Close</button>
+            </div>
+        </div>
+    
+
+    </section>
+
+    <!-- Modal Popup for Success -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <p>Your reservation has been successfully submitted!</p>
+            <button class="close-btn" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Mountain Fusion Bistro Info -->
+        <div class="footer-section">
+            <h3>MOUNTAIN FUSION BISTRO</h3>
+            <p>We are available for function and event enquiries at all times.</p>
+            <div class="footer-social">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://goo.gl/maps/your-map-link" target="_blank"><i class="fas fa-map-marker-alt"></i></a> <!-- Google Maps icon -->
+            </div>
+        </div>
+
+        <!-- Menu Links -->
+        <div class="footer-section">
+            <h3>OUR MENUS</h3>
+            <ul class="footer-menu">
+                <li><a href="menu.html?category=entrees">Entrées</a></li>
+                <li><a href="menu.html?category=mains">Mains</a></li>
+                <li><a href="menu.html?category=desserts">Desserts</a></li>
+                <li><a href="menu.html?category=non-alcoholic">Non-Alcoholic Beverages</a></li>
+                <li><a href="menu.html?category=alcoholic">Alcoholic Beverages</a></li>
+                <li><a href="menu.html?category=kids">Kids Menu</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+            <h3>CONTACT US</h3>
+            <p>Phone: <a href="tel:+61234567890">+61 (234) 567-890</a></p>
+            <p>Email: <a href="mailto:info@mountainfusionbistro.com">info@mountainfusionbistro.com</a></p>
+            <p>Address: <a href="https://maps.google.com">123 Bistro Lane, Food City, FC 45678</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2024. All rights reserved by Mountain Fusion Bistro.</p>
+    </div>
+</footer>
+<script>
+    $(document).ready(function() {
+        function checkNotifications() {
+                var visibleNotifications = false;
+
+                // Loop through all notifications and check if any are visible
+                $('#notificationList li').each(function() {
+                    if ($(this).css('display') !== 'none') {
+                        visibleNotifications = true;
+                        return false; // Exit the loop once we find a visible notification
+                    }
+                });
+
+                // Show the "No notifications found" message if no notifications are visible
+                if (visibleNotifications) {
+                    $('#noNotificationsMessage').hide();
+                } else {
+                    $('#noNotificationsMessage').show();
+                }
+            }
+       
+
+            // Call the function on page load
+            checkNotifications();
+        // Hide notification when clicked
+        $('.notification-item').click(function() {
+            $(this).fadeOut(); // Fade out the clicked notification
+            checkNotifications();
+        });
+
+     
+       
+    });
+</script>
+
+</body>
+</html>

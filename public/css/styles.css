@@ -11,6 +11,10 @@ body {
     color: #fff;  /* Very Dark Brown for text */
     background-color: #e2ccac;
 }
+.section-container
+{
+    margin: 10px 20px 10px 20px;
+}
 
 /* Global Heading Styling - Applies to all pages */
 h1, h2, h3, h4 {
@@ -621,6 +625,305 @@ h5 {
     margin-bottom: 3rem;
 }
 
+ /*Kitchen setting*/
+.kitchen-settings
+{
+    margin: 10px 20px 10px 20px;
+}
+.column-width
+{
+    width: 340px !important;
+}
+ .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 16px;
+    grid-auto-rows: minmax(auto, max-content); /
+  }
+  .column {
+    border: 1px solid #ddd;
+    padding: 0;
+    background-color: #f9f9f9;
+    overflow: hidden
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+  }
+  .table th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: #3A506B;
+  }
+ .table th {
+    background-color: #f2f2f2;
+  }
+  .table .first-header{
+    text-align: center;
+    background: #23d25d;
+    color: #fff;
+  }
+  .table .sub-header{
+    text-align: center;
+    background: #f44234;
+    color: #fff;
+  }
+  .table .sub-header-column{
+    
+    background: #ced1d6;
+    color: #383e52;
+  }
+ 
+  .mt-10
+  {
+    margin-top: 10px;
+  
+  }
+  .mb-10{
+    margin-bottom: 10px;
+  }
+
+
+/*Datatable*/
+.reservation-page .table-responsive .dataTables_scrollHead, .reservation-page .table-responsive .dataTables_scrollHeadInner,.reservation-page .table-responsive .dataTables_scrollHeadInner .table,.reservation-page .table-responsive .dataTables_scrollBody,.reservation-pages .table-responsive .dataTables_scrollBody .table{
+    width:auto;
+}
+.reservation-page .dataTables_wrapper .dataTables_filter label{
+    margin-right:0;
+}
+.reservation-page .table-responsive {
+    overflow: hidden;
+    height: 100%;
+    display: contents;
+}
+.reservation-page .wrapper-content > .row .container-fluid {
+    padding: 0 0 10px 0;
+}
+.reservation-page .dataTables_wrapper {
+    padding: 0;
+    width: 100%;
+}
+.reservation-page div.dataTables_wrapper div.dataTables_filter input {
+    /* margin-right: 0.5em; */
+    display: block;
+    width: 100% !important;
+    float: left;
+    margin: 0;
+    height: 40px;
+    border-bottom: 1px solid #d7d7d7 !important;
+    border: 0;
+    background: #fff;
+    font-size: 13px;
+    font-family: ralewaymedium;
+}
+.dataTables_wrapper .dataTables_filter input[type="search"] {
+    padding: 10px 15px 10px 35px; /* Add padding for icon */
+    font-size: 13px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.2s ease;
+    margin-left: -30px; /* Align input properly */
+}
+
+.dataTables_wrapper .dataTables_filter input[type="search"]:focus {
+    border-color: #99540A;
+    outline: none;
+}
+.reservation-page .table-responsive .dataTables_scrollHead, .reservation-page .table-responsive .dataTables_scrollHeadInner, .reservation-paget .table-responsive .dataTables_scrollHeadInner .table, .reservation-page .table-responsive .dataTables_scrollBody, .reservation-page .table-responsive .dataTables_scrollBody .table {
+    width: 100% !important;
+}
+.reservation-page .table-responsive .html5buttons, .reservation-page .table .html5buttons {
+    display: none;
+}
+.reservation-page div.dataTables_wrapper div.dataTables_filter label {
+    width: 100% !important;
+    color: transparent;
+}
+.reservation-page .table-responsive .table, .reservation-page .table {
+    border-collapse: collapse !important;
+}
+.reservation-page .table-responsive .table thead tr th, .reservation-page .table thead tr th {
+    background: #fff;
+    font-family: ralewaybold;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #576167;
+    padding: 9px 9px;
+}
+
+.reservation-page .table-responsive .table tbody td, .reservation-page .table tbody td {
+    font-size: 12.5px;
+    font-family: Calibri;
+    color: grey;
+    padding: 8px 10px;
+    vertical-align: middle;
+    border-bottom: 1px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+.reservation-page div.dataTables_wrapper div.dataTables_paginate {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.reservation-page .table-responsive .dataTables_scrollHead, .reservation-page .table-responsive .dataTables_scrollHeadInner, .reservation-page .table-responsive .dataTables_scrollHeadInner .table, .reservation-page .table-responsive .dataTables_scrollBody, .reservation-page .table-responsive .dataTables_scrollBody .table {
+    width: 100% !important;
+}
+.reservation-page .table-responsive {
+    overflow: hidden;
+    height: 100%;
+    display: contents;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+}
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 13px;
+    text-decoration: none;
+    color: #0056b3;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.pagination li a:hover,
+.pagination li.active a {
+    background-color: #0056b3;
+    color: #fff;
+    border-color: #0056b3;
+}
+
+.pagination li.disabled a {
+    pointer-events: none;
+    opacity: 0.5;
+}
+button.border-button.round {
+    width: 28px;
+    height: 28px;
+    padding: 7px 5px;
+    border-radius: 100%;
+     line-height: 0; 
+    border-color: #576167;
+    color: #576167;
+    background: transparent;
+}
+button.border-button.round i {
+    font-size: 12px;
+}
+.dataTables_filter label {
+    margin-right: 5px;
+}
+
+
+
+/* Reservation Details*/
+.reservation-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.second-header {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.second-header h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.details-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.details-row:last-child {
+    border-bottom: none;
+}
+
+.details-row span {
+    font-weight: bold;
+    color: #555;
+}
+
+.details-row .value {
+    color: #888;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container button {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #003d80;
+}
+ /* Header Row Style */
+ th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Striped Rows */
+tr:nth-child(odd) {
+    background-color: #f9f9f9 !important;
+}
+
+tr:nth-child(even) {
+    background-color: #ffffff !important;
+}
+
+/* Hover Effect */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
 /* Reservation Page */
 .reservation-page .reservation-section {
     padding: 2rem 0;
@@ -1217,4 +1520,128 @@ body {
     .reservation-page .reservation-form {
         padding: 1rem;
     }
+}
+
+/*
+/* Notification List Styles */
+.notification-list {
+    width: 80%;
+    
+    margin: 20px auto;
+    list-style: none;
+    padding: 0;
+}
+
+.notification-item {
+    background-color: #5e3719;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.notification-item a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.notification-item a:hover {
+    color: #ffda8b;
+}
+
+.notification-item:hover {
+    transform: scale(1.05);
+}
+
+/* Modal Styles */
+#successModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#successModal .modal-content {
+    text-align: center;
+}
+
+#successModal p {
+    font-size: 1.2rem;
+    color: #5E3719;
+    margin-bottom: 20px;
+}
+
+#successModal .modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #5e3719;
+}
+
+#successModal .close-btn {
+    padding: 0.8rem 2rem;
+    background-color: #5e3719;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#successModal .close-btn:hover {
+    background-color: #8D542C;
+}
+*/
+/* Button Styles */
+.reviews-page .button-container {
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.reviews-page .button-container button {
+    width: 33.33%;
+    padding: 0.75rem;
+    background-color: #8aa2a9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reviews-page .button-container button:hover {
+    background-color: #0056b3; /* Lighter brown on hover */
+}
+
+/* Character count display */
+.reviews-page #char-count {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: left;
+}
+
+.quantity-center {
+    text-align: center;
 }

@@ -6,6 +6,9 @@ const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const session = require('express-session');
+const messageRoutes = require('./routes/message');
+const fs = require('fs');
 
 const app = express();
 const server = http.createServer(app);
@@ -23,6 +26,13 @@ mongoose
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/html', express.static(path.join(__dirname, 'html')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Use body-parser middleware
 app.use(bodyParser.json());
 
 // Session Configuration
@@ -133,8 +143,30 @@ io.on('connection', (socket) => {
   });
 });
 
-// Start the Server
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Wildcard route to serve HTML files
+app.get('/:page', (req, res) => {
+  const page = req.params.page;
+  const filePath = path.join(__dirname, 'public', 'html', `${page}.html`);
+
+  console.log('Looking for file at:', filePath); // Debugging
+
+  if (fs.existsSync(filePath)) {
+    res.sendFile(filePath);
+  } else {
+    res.status(404).send('Page not found');
+  }
 });
+
+// Root route serves index.html
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
+});
+
+// Listen on Port
+const PORT = process.env.PORT || 3000;
+
+// Bind the server to 0.0.0.0 to allow access from other devices
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on http://0.0.0.0:${PORT}`);
+});
+

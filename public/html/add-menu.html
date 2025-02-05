@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Menu Item</title>
+    <link rel="stylesheet" href="../css/add-menu.css"> 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9d5b8; /* Light tan background */
+            margin: 0;
+            padding: 0;
+            color: #5a3825; /* Dark brown text */
+        }
+        
+        header {
+            background: url('../images/bg3.png') no-repeat center center/cover;
+            color: white; 
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        main {
+            margin: 2rem auto;
+            padding: 2rem;
+            max-width: 600px;
+            background: #f2e6d8; /* Light tan for form container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            color: #5a3825; /* Dark brown text */
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #5a3825; /* Dark brown */
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        select {
+            padding: 0.7rem;
+            font-size: 1rem;
+            border: 1px solid #c3a089; /* Light brown border */
+            border-radius: 4px;
+            background-color: #f8f1e9; /* Soft beige input fields */
+            color: #333;
+        }
+        
+        input::placeholder {
+            color: #a08c76; /* Muted brown for placeholders */
+        }
+        
+        button {
+            padding: 0.7rem;
+            font-size: 1rem;
+            background-color: #8aa2a9;
+            color: #fff; /* White text */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #0056b3; 
+        }
+        
+        #response {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #e0ffe0; /* Light green for success */
+            border: 1px solid #c3ffc3;
+            border-radius: 4px;
+            color: #333;
+        }
+        
+        #response.error {
+            background: #ffe0e0; /* Light red for errors */
+            border-color: #ffc3c3;
+            color: #5a3825; /* Dark brown for consistency */
+        }
+        
+        .delete-section {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .delete-section label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5a3825; /* Dark brown */
+        }
+        
+        .delete-section input {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #c3a089; /* Light brown border */
+            border-radius: 4px;
+            background-color: #f8f1e9; /* Beige */
+        }
+        
+        .delete-section button {
+            background-color: #d9534f; /* Red for delete action */
+            color: #fff; /* White text */
+        }
+        
+        .delete-section button:hover {
+            background-color: #c9302c; /* Slightly darker red */
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1>Add Menu Item</h1>
+    </header>
+    <main>
+        <form id="add-menu-form" enctype="multipart/form-data">
+            <label for="name">Item Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter item name" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="entrees">Entrées</option>
+                <option value="mains">Mains</option>
+                <option value="desserts">Desserts</option>
+                <option value="non-alcoholic">Non-Alcoholic Beverages</option>
+                <option value="alcoholic">Alcoholic Beverages</option>
+                <option value="kids">Kids Menu</option>
+            </select>
+
+            <label for="price">Price ($):</label>
+            <input type="number" id="price" name="price" placeholder="Enter price" step="0.01" required>
+
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <button type="submit">Add Item</button>
+        </form>
+        <div id="response"></div>
+    </main>
+    <script>
+        const form = document.getElementById('add-menu-form');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/menu/add', {
+                    method: 'POST',
+                    body: formData,
+                });
+                const result = await response.json();
+                document.getElementById('response').innerText = result.message;
+                form.reset();
+            } catch (error) {
+                document.getElementById('response').innerText = 'Error adding menu item';
+                document.getElementById('response').classList.add('error');
+            }
+        });
+    </script>
+</body>
+</html>

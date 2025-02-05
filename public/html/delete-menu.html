@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Menu Item</title>
+    <link rel="stylesheet" href="../css/styles.css">
+<style>
+        /* General Reset */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9d5b8; /* Light Tan */
+    margin: 0;
+    padding: 0;
+    color: #5a3825; /* Dark Brown */
+}
+
+/* Header Section */
+header {
+    background: url('../images/bg3.png') no-repeat center center/cover;
+    color: white; 
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Main Container */
+main {
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 600px;
+    background: #f2e6d8; /* Light Tan */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+label {
+    font-weight: bold;
+    color: #5a3825; /* Dark Brown */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+    padding: 0.7rem;
+    font-size: 1rem;
+    border: 1px solid #c3a089; /* Light Brown */
+    border-radius: 4px;
+    background-color: #f8f1e9; /* Soft Beige */
+    color: #5a3825; /* Dark Brown Text */
+}
+
+input::placeholder {
+    color: #a08c76; /* Muted Brown */
+}
+
+input[type="file"] {
+    background-color: #fff;
+    border: none;
+}
+
+button {
+    padding: 0.7rem;
+    font-size: 1rem;
+    background-color: #8aa2a9;
+    color: #fff; /* White Text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Success and Error Messages */
+#response {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #e0ffe0; /* Success Green */
+    border: 1px solid #c3ffc3; /* Green Border */
+    border-radius: 4px;
+    color: #333; /* Dark Text */
+}
+
+#response.error {
+    background: #ffe0e0; /* Error Red */
+    border-color: #ffc3c3; /* Error Border */
+    color: #5a3825; /* Dark Brown */
+}
+
+/* Delete Section */
+.delete-section {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+}
+
+.delete-section label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #5a3825; /* Dark Brown */
+}
+
+.delete-section input {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #c3a089; /* Light Brown */
+    border-radius: 4px;
+    background-color: #f8f1e9; /* Beige */
+}
+
+.delete-section button {
+    background-color: #d9534f; /* Delete Red */
+    color: #fff; /* White Text */
+}
+
+.delete-section button:hover {
+    background-color: #c9302c; /* Hover Red */
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1>Delete Menu Item</h1>
+    </header>
+    <main>
+        <div class="controls">
+            <input type="text" id="search" placeholder="Search by name" oninput="filterItems()">
+            <select id="sort" onchange="sortItems()">
+                <option value="none">Sort By</option>
+                <option value="category">Category</option>
+                <option value="price">Price</option>
+            </select>
+        </div>
+        <div id="menu-items"></div>
+        <div id="response"></div>
+    </main>
+    <script>
+        let menuItems = [];
+
+        async function fetchMenuItems() {
+            try {
+                const response = await fetch('/menu/all');
+                menuItems = await response.json();
+                displayMenuItems(menuItems);
+            } catch (error) {
+                console.error('Error fetching menu items:', error);
+            }
+        }
+
+        function displayMenuItems(items) {
+            const menuContainer = document.getElementById('menu-items');
+            menuContainer.innerHTML = '';
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `
+                    <p>${item.name} (${item.category}) - $${item.price}</p>
+                    <button onclick="deleteItem('${item._id}')">Delete</button>
+                `;
+                menuContainer.appendChild(itemDiv);
+            });
+        }
+
+        async function deleteItem(id) {
+            try {
+                const response = await fetch(`/menu/delete/${id}`, { method: 'DELETE' });
+                const result = await response.json();
+
+                const responseDiv = document.getElementById('response');
+                responseDiv.innerText = result.message;
+                responseDiv.classList.remove('error');
+                responseDiv.classList.add('success');
+
+                menuItems = menuItems.filter(item => item._id !== id);
+                displayMenuItems(menuItems);
+            } catch (error) {
+                const responseDiv = document.getElementById('response');
+                responseDiv.innerText = 'Error deleting menu item';
+                responseDiv.classList.remove('success');
+                responseDiv.classList.add('error');
+            }
+        }
+
+        function filterItems() {
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+            const filteredItems = menuItems.filter(item => item.name.toLowerCase().includes(searchTerm));
+            displayMenuItems(filteredItems);
+        }
+
+        function sortItems() {
+            const sortValue = document.getElementById('sort').value;
+            let sortedItems = [...menuItems];
+
+            if (sortValue === 'category') {
+                sortedItems.sort((a, b) => a.category.localeCompare(b.category));
+            } else if (sortValue === 'price') {
+                sortedItems.sort((a, b) => a.price - b.price);
+            }
+
+            displayMenuItems(sortedItems);
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchMenuItems);
+    </script>
+</body>
+</html>

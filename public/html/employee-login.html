@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e2ccac;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            position: relative;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: border-color 0.2s ease;
+        }
+        input[type="password"]:focus,
+        input[type="email"]:focus {
+            border-color: #8aa2a9;
+            outline: none;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        .button-container {
+            margin-top: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #8aa2a9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-footer {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .form-footer a {
+            color: #8aa2a9;
+            text-decoration: none;
+        }
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Employee Login</h1>
+        <form id="employee-login-form">
+            <div class="form-group">
+                <label for="username">Email Address:</label>
+                <input type="email" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span class="toggle-password" id="togglePassword">👁️</span>
+            </div>
+            <div class="error-message" id="errorMessage" style="display: none;">Invalid Username or Password</div>
+            <div class="button-container">
+                <button type="submit">Login</button>
+            </div>
+            <div class="form-footer">
+                <a href="/html/employee-forgot-password.html">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Toggle password visibility
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+        });
+
+        // Handle form submission
+        document.getElementById('employee-login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch('/employee/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    window.location.href = result.redirectUrl;
+                } else {
+                    errorMessage.textContent = result.message || 'Invalid Username or Password';
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error during login:', error);
+                errorMessage.textContent = 'An error occurred. Please try again.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

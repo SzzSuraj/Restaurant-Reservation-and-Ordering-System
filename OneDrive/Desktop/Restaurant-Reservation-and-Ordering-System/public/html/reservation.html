@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Fusion Bistro - Reservation</title>
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        /* Modal Styles */
+        #successModal {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            border-radius: 0;
+            max-width: unset;
+        }
+
+        #successModal .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        #successModal p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: #2B1A1D;
+        }
+
+        #successModal .close-btn {
+            padding: 0.5rem 1.5rem;
+            background-color: #5E3719;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        #successModal .close-btn:hover {
+            background-color: #8D542C;
+        }
+
+        .checkbox-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body class="reservation-page">
+
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../images/logo.png" alt="Mountain Fusion Bistro Logo" class="logo-img">
+                </a>
+            </div>
+
+            <!-- Navigation Links with Dropdown -->
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="menu.html?category=entrees">Menu</a>
+                    <ul class="dropdown-content">
+                        <li><a href="menu.html?category=entrees">Entrées</a></li>
+                        <li><a href="menu.html?category=mains">Mains</a></li>
+                        <li><a href="menu.html?category=desserts">Desserts</a></li>
+                        <li><a href="menu.html?category=non-alcoholic">Non-Alcoholic Beverages</a></li>
+                        <li><a href="menu.html?category=alcoholic">Alcoholic Beverages</a></li>
+                        <li><a href="menu.html?category=kids">Kids Menu</a></li>
+                    </ul>
+                </li>
+                <li><a href="reservation.html">Reservation</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#">Login</a>
+                    <ul class="dropdown-content">
+                        <li><a href="employee-login.html">Employee Login</a></li>
+                        <li><a href="admin-login.html">Admin Login</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <h1>Make a Reservation</h1>
+    </header>
+
+    <!-- Reservation Form Section -->
+    <section class="reservation-section">
+        <form id="reservationForm" class="reservation-form">
+            <!-- Full Name Input -->
+            <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" name="fullName" required pattern="[A-Za-z\s]+"
+                    title="Only alphabetic characters and spaces are allowed">
+            </div>
+
+            <!-- Email Input -->
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            </div>
+
+            <!-- Mobile Number Input -->
+            <div class="form-group">
+                <label for="mobile-number">Mobile Number</label>
+                <input type="tel" id="mobile-number" name="mobileNumber" required pattern="\d{10}"
+                    title="Mobile number must be exactly 10 digits" placeholder="Enter your 10-digit mobile number">
+                <small class="hint">Mobile number must be exactly 10 digits</small>
+            </div>
+
+            <!-- Number of People Input -->
+            <div class="form-group">
+                <label for="number-people">Number of People</label>
+                <input type="number" id="number-people" name="numberOfPeople" min="1" max="20" required
+                    placeholder="Enter number of people">
+            </div>
+
+            <!-- Reservation Date Input -->
+            <div class="form-group">
+                <label for="reservation-date">Reservation Date</label>
+                <input type="date" id="reservation-date" name="reservationDate" required>
+            </div>
+
+            <!-- Reservation Time Dropdown -->
+            <div class="form-group">
+                <label for="reservation-time">Reservation Time</label>
+                <select id="reservation-time" name="reservationTime" required></select>
+            </div>
+
+            <!-- Table Location Dropdown -->
+            <div class="form-group">
+                <label for="table-location">Table Location</label>
+                <select id="table-location" name="tableLocation" required>
+                    <option value="" disabled selected hidden>Select a table location</option>
+                    <option value="Near-Window">Near the Window</option>
+                    <option value="Near-Bar">Near the Bar</option>
+                    <option value="Corner">In the Corner</option>
+                    <option value="Outdoor">Outdoor Seating</option>
+                </select>
+            </div>
+
+            <!-- Reminder Checkbox -->
+            <div class="form-group checkbox-group">
+                <label for="reminderOptIn">Send me a reminder notification</label>
+                <input type="checkbox" id="reminderOptIn" name="reminderOptIn">
+            </div>
+
+            <!-- Submit Button -->
+            <div class="button-container">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Modal Popup for Success -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <p>Your reservation has been successfully submitted!</p>
+            <button class="close-btn" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to get query parameters from the URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+      
+        // Check if the 'success' query parameter is present
+        if (getQueryParam('success') === 'true') {
+            const modal = document.getElementById('successModal');
+            modal.style.display = 'flex';  // Show the modal
+        }
+      
+        // Function to set the minimum date
+        function setMinDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = (today.getMonth() + 1).toString().padStart(2, '0'); // Adding leading zero if necessary
+            const day = today.getDate().toString().padStart(2, '0'); // Adding leading zero
+      
+            // Set the min attribute for the date input to today's date
+            const minDate = `${year}-${month}-${day}`;
+            document.getElementById('reservation-date').setAttribute('min', minDate);
+        }
+      
+        // Function to generate time options
+        function generateTimeOptions() {
+            const selectElement = document.getElementById('reservation-time');
+            selectElement.innerHTML = ''; // Clear current options
+      
+            const reservationDate = document.getElementById('reservation-date').value;
+            const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+            const now = new Date();
+            let startTime = 0;
+      
+            // If the selected date is today, start time should be 1 hour ahead
+            if (reservationDate === today) {
+                now.setHours(now.getHours() + 1);
+                startTime = now.getHours();
+            }
+      
+            // Populate the select element with time options
+            for (let i = startTime; i < 24; i++) {
+                for (let j = 0; j < 60; j += 30) { // Increment by 30 minutes
+                    const option = document.createElement('option');
+                    const hour = i.toString().padStart(2, '0');
+                    const minute = j.toString().padStart(2, '0');
+                    option.value = `${hour}:${minute}`;
+                    option.textContent = `${hour}:${minute}`;
+                    selectElement.appendChild(option);
+                }
+            }
+        }
+      
+        // Run these functions when the page loads
+        window.onload = function() {
+            setMinDate();  // Set minimum date when the page loads
+            generateTimeOptions(); // Populate the time options on page load
+        };
+      
+        // Run the generateTimeOptions function whenever the date input changes
+        document.getElementById('reservation-date').addEventListener('change', generateTimeOptions);
+    
+        document.getElementById('mobile-number').addEventListener('input', function (e) {
+            // Remove all non-numeric characters
+            this.value = this.value.replace(/\D/g, '');
+            // Show hint if the length is less than 10 digits
+            const hint = document.querySelector('.hint');
+            if (this.value.length < 10) {
+                hint.style.display = 'block'; // Show hint
+                this.setCustomValidity('Mobile number must be exactly 10 digits');
+            } else {
+                hint.style.display = 'none';  // Hide hint
+                this.setCustomValidity(''); // Clear any custom validation message
+            }
+        });
+    
+        document.getElementById('full-name').addEventListener('input', function (e) {
+            // Allow only alphabetic characters and spaces
+            this.value = this.value.replace(/[^A-Za-z\s]/g, '');
+        });
+    
+        // Prevent non-numeric characters like 'e', '-', etc.
+        document.getElementById('number-people').addEventListener('keydown', function(event) {
+            // Allow control keys like backspace, delete, tab, arrows, etc.
+            if (event.key === "Backspace" || event.key === "ArrowLeft" || event.key === "ArrowRight" || event.key === "Tab" || event.key === "Delete") {
+                return;
+            }
+            // Prevent non-numeric input
+            if (isNaN(Number(event.key))) {
+                event.preventDefault();
+            }
+        });
+    
+        // Prevent invalid numbers on input change (like negative numbers or 0)
+        document.getElementById('number-people').addEventListener('input', function() {
+            const value = parseInt(this.value, 10);
+            if (value < 1) {
+                this.value = 1;
+            }
+        });
+    
+    </script>
+    <!-- added -->
+
+    <!-- JavaScript Section -->
+    <script>
+        const form = document.getElementById('reservationForm');
+        const successModal = document.getElementById('successModal');
+
+        // Handle form submission
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Gather form data
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('http://localhost:3000/reservation/submit', {
+                    method: 'POST',
+                    body: JSON.stringify(Object.fromEntries(formData)),
+                    headers: { 'Content-Type': 'application/json' },
+                });
+
+                if (response.ok) {
+                    successModal.style.display = 'flex'; // Show success modal
+                    document.body.style.overflow = 'hidden';
+                    form.reset(); // Reset form fields
+                } else {
+                    alert('Failed to submit the reservation. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('An error occurred. Please try again.');
+            }
+        });
+
+        // Close modal functionality
+        document.getElementById('closeModal').addEventListener('click', () => {
+            successModal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    </script>
+</body>
+
+</html>

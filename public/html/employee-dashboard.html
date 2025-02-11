@@ -10,7 +10,7 @@
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #e9d5b8; /* Light tan background */
+            background-color: #e9d5b8;
             color: #333;
         }
 
@@ -18,43 +18,93 @@
         .sidebar {
             width: 250px;
             height: 100vh;
-            background-color: #5a3825; /* Dark brown */
-            color: #fff; /* White text */
+            background-color: #5a3825;
+            color: #fff;
             position: fixed;
             top: 0;
             left: 0;
             display: flex;
             flex-direction: column;
+            align-items: center;
             padding: 20px;
+            overflow-y: auto; /* Enable scrolling */
+            scrollbar-width: thin;
+            scrollbar-color: #e1b382 #5a3825;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #e1b382;
+            border-radius: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background-color: #5a3825;
+        }
+
+        .sidebar .logo {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .logo img {
+            width: 150px;
+            height: auto;
         }
 
         .sidebar h2 {
             text-align: center;
             font-size: 1.5rem;
-            margin-bottom: 30px;
-            color: #e1b382; /* Accent tan */
+            margin-bottom: 20px;
+            color: #e1b382;
         }
 
         .sidebar ul {
             list-style: none;
             padding: 0;
+            width: 100%;
         }
 
         .sidebar ul li {
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         .sidebar ul li a {
-            color: #f4e1c1; /* Lighter tan text */
+            color: #f4e1c1;
             text-decoration: none;
             font-size: 1rem;
             display: block;
             padding: 10px;
             border-radius: 5px;
+            text-align: center;
         }
 
         .sidebar ul li a:hover {
-            background-color: #744831; /* Slightly lighter brown */
+            background-color: #744831;
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            background-color: #b22222;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            display: block;
+            text-decoration: none;
+        }
+
+        .logout-btn:hover {
+            background-color: #a02020;
         }
 
         /* Main Content */
@@ -64,7 +114,7 @@
         }
 
         .main-content h1 {
-            color: #5a3825; /* Dark brown heading */
+            color: #5a3825;
             font-size: 2rem;
         }
 
@@ -76,12 +126,12 @@
         }
 
         .dashboard-card {
-            background-color: #f2e6d8; /* Light tan */
+            background-color: #f2e6d8;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-            color: #5a3825; /* Dark brown text */
+            color: #5a3825;
         }
 
         .dashboard-card h2 {
@@ -91,8 +141,8 @@
 
         .dashboard-card a {
             text-decoration: none;
-            color: #fff; /* White button text */
-            background-color: #5a3825; /* Dark brown */
+            color: #fff;
+            background-color: #5a3825;
             padding: 10px 20px;
             border-radius: 5px;
             display: inline-block;
@@ -100,87 +150,249 @@
         }
 
         .dashboard-card a:hover {
-            background-color: #744831; /* Lighter brown */
+            background-color: #744831;
         }
 
         .dashboard-card i {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            color: #e1b382; /* Accent tan */
+            color: #e1b382;
         }
-
-        /* Reports Section */
-        .report-section {
-            margin-top: 40px;
-        }
-
-        .report-section h2 {
-            color: #5a3825; /* Dark brown */
-            margin-bottom: 20px;
-        }
-
-        .report-card {
-            background-color: #f2e6d8; /* Light tan */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-        }
+         /* Charts Section */
+    .charts-section {
+      margin-top: 40px;
+      margin-bottom: 40px; /* Space below the charts */
+    }
+    .charts-section h2 {
+      color: #5a3825;
+      margin-bottom: 20px;
+    }
+    .charts-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .chart-item {
+      flex: 1;
+      max-width: 30%; /* Limits chart width */
+      height: 300px;  /* Fixed height for consistency */
+      position: relative;
+    }
+    /* Ensure canvases fill their containers */
+    .chart-item canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  </style>
+  
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </style>
-
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="../images/logo.png" alt="Employee Logo">
+        </div>
         <h2>Employee Panel</h2>
         <ul>
-            <li><a href="employee-reset-password.html">Change Password</a></li>
-            <li><a href="orders.html">View Orders</a></li>
-            <li><a href="reservations-list.html">View Reservations</a></li>
-            <li><a href="reviews-list.html">View Reviews</a></li>
-            <li><a href="messages.html">Messages</a></li>
-            <li><a href="announcements.html">Announcements</a></li>
+          <li><a href="/html/employee-reset-password.html">Change Password</a></li>
+          <li><a href="/html/add-menu.html">Add Menu Item</a></li>
+          <li><a href="/html/delete-menu.html">Delete Menu Item</a></li>
+          <li><a href="/html/discounts.html">Manage Discounts</a></li>
+          <li><a href="/html/kitchentable.html">Kitchen Orders</a></li>
+          <li><a href="/html/notification.html">Notifications</a></li>
+          <li><a href="/html/activeOrders.html">Orders Dashboard</a></li>
+          <li><a href="/html/reservation-details.html">Reservation Details</a></li>
+          <li><a href="/html/reservation-table.html">Reservation Table</a></li>
+          <li><a href="/html/reservations-list.html">Reservations List</a></li>
+          <li><a href="/html/reviews-list.html">Customer Reviews</a></li>
+          <li><a href="/html/table-management.html">Table Management</a></li>
+          <li><a href="/html/message.html">Announcements</a></li>
         </ul>
+
+        <!-- Logout Button -->
+        <a href="/html/employee-login.html" class="logout-btn">Logout</a>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
         <h1>Employee Dashboard</h1>
+        <div class="charts-section">
+            <h1>Customer Activity Trends</h1>
+            <!-- Sales Filter Dropdown for the Sales Graph -->
+          <div style="margin-bottom: 10px;">
+            <label for="salesFilter">Sales Filter: </label>
+            <select id="salesFilter">
+              <option value="daily">Daily (Mon-Sun)</option>
+              <option value="monthly">Monthly (Jan-Dec)</option>
+            </select>
+          </div>
+          <div class="charts-container">
+            <div class="chart-item">
+              <canvas id="pieChart"></canvas>
+            </div>
+            <div class="chart-item">
+                <canvas id="lineChart"></canvas>
+              </div>
+              <div class="chart-item">
+                <canvas id="barChart"></canvas>
+              </div>
+            </div>
+          </div>
 
         <div class="dashboard-container">
             <!-- Cards -->
             <div class="dashboard-card">
-                <i class="fas fa-key"></i>
+                <i class="fas fa-user-lock"></i>
                 <h2>Change Password</h2>
-                <a href="employee-reset-password.html">Go</a>
+                <a href="/html/employee-reset-password.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-utensils"></i>
+                <h2>Add Menu Item</h2>
+                <a href="/html/add-menu.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-tags"></i>
+                <h2>Manage Discounts</h2>
+                <a href="/html/discounts.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-bell"></i>
+                <h2>Notifications</h2>
+                <a href="/html/notification.html">Go</a>
             </div>
             <div class="dashboard-card">
                 <i class="fas fa-shopping-cart"></i>
-                <h2>View Orders</h2>
-                <a href="orders.html">Go</a>
+                <h2>Orders Dashboard</h2>
+                <a href="/html/activeOrders.html">Go</a>
             </div>
             <div class="dashboard-card">
                 <i class="fas fa-calendar-alt"></i>
-                <h2>View Reservations</h2>
-                <a href="reservations-list.html">Go</a>
+                <h2>Reservations</h2>
+                <a href="/html/reservations-list.html">Go</a>
+            </div>
+            <div class="dashboard-card">
+                <i class="fas fa-table"></i>
+                <h2>Table Management</h2>
+                <a href="/html/table-management.html">Go</a>
             </div>
             <div class="dashboard-card">
                 <i class="fas fa-star"></i>
-                <h2>View Reviews</h2>
-                <a href="reviews-list.html">Go</a>
-            </div>
-            <div class="dashboard-card">
-                <i class="fas fa-envelope"></i>
-                <h2>Messages</h2>
-                <a href="messages.html">Go</a>
+                <h2>Customer Reviews</h2>
+                <a href="/html/reviews-list.html">Go</a>
             </div>
             <div class="dashboard-card">
                 <i class="fas fa-bullhorn"></i>
                 <h2>Announcements</h2>
-                <a href="announcements.html">Go</a>
+                <a href="/html/message.html">Go</a>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const pieCtx = document.getElementById('pieChart').getContext('2d');
+      const lineCtx = document.getElementById('lineChart').getContext('2d');
+      const barCtx = document.getElementById('barChart').getContext('2d');
+      const salesFilterSelect = document.getElementById('salesFilter');
+      // Initialize the Pie Chart (Best Selling Items)
+      const pieChart = new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+          labels: [],
+          datasets: [{
+            data: [],
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF']
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+      // Initialize the Line Chart (Sales Graph)
+      const lineChart = new Chart(lineCtx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Sales',
+            data: [],
+            borderColor: '#5a3825',
+            backgroundColor: 'rgba(90, 56, 37, 0.1)',
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              ticks: {
+                stepSize: 100
+              }
+            }
+          }
+        }
+      });
+      // Initialize the Bar Chart (Customer Orders Count)
+      const barChart = new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Orders Count',
+            data: [],
+            backgroundColor: '#e1b382'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              ticks: {
+                stepSize: 1
+              }
+            }
+          }
+        }
+    });
+     // Function to fetch chart data from the server and update charts.
+     async function updateCharts() {
+        try {
+          const filterValue = salesFilterSelect.value;
+          const response = await fetch('/charts/data?salesFilter=' + filterValue);
+          const data = await response.json();
+          // Update Pie Chart (Best Selling Items)
+          pieChart.data.labels = data.bestSelling.labels;
+          pieChart.data.datasets[0].data = data.bestSelling.data;
+          pieChart.update();
+          // Update Line Chart (Sales Graph)
+          lineChart.data.labels = data.sales.labels;
+          lineChart.data.datasets[0].data = data.sales.data;
+          lineChart.options.scales.y.ticks.stepSize = data.sales.stepSize;
+          lineChart.update();
+          // Update Bar Chart (Customer Orders Count)
+          barChart.data.labels = data.customerOrders.labels;
+          barChart.data.datasets[0].data = data.customerOrders.data;
+          barChart.update();
+        } catch (error) {
+          console.error('Error fetching chart data:', error);
+        }
+      }
+      // Fetch chart data immediately on load.
+      updateCharts();
+      // Update charts automatically every 10 seconds.
+      setInterval(updateCharts, 10000);
+      // Update charts when the sales filter changes.
+      salesFilterSelect.addEventListener('change', updateCharts);
+    });
+  </script>
 </body>
 </html>

@@ -41,4 +41,21 @@ router.get('/top-reviews', async (req, res) => {
     }
 });
 
+// DELETE route for deleting a review
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedReview = await Review.findByIdAndDelete(id);
+        if (!deletedReview) {
+            return res.status(404).json({ message: 'Review not found' });
+        }
+        res.json({ message: 'Review deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting review:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
+
 module.exports = router;

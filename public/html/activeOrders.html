@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Orders</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2B1A1D;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            background-color: #e9d5b8;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .header-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            padding: 10px 20px;
+            background-color: #5a3825;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #744831;
+        }
+
+        /* Table */
+        .table-container {
+            width: 90%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            font-size: 1.1em;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #2c160b;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Status Dropdown */
+        select {
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="admin-dashboard.html">
+            <img src="../images/logo.png" alt="Admin Dashboard Logo" class="logo">
+        </a>
+        <button class="back-btn" onclick="window.location.href='admin-dashboard.html'">Back to Dashboard</button>
+    </div>
+</header>
+
+<h1>Active Orders</h1>
+
+<main>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Table No.</th>
+                    <th>Items</th>
+                    <th>Order Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="ordersList">
+                <!-- Orders will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+    async function fetchOrders() {
+        try {
+            const response = await fetch('/api/orders/latest'); // Fetch latest 10 orders
+            if (!response.ok) throw new Error("Failed to fetch orders");
+
+            const orders = await response.json();
+            const ordersList = document.getElementById('ordersList');
+            ordersList.innerHTML = '';
+
+            if (orders.length === 0) {
+                ordersList.innerHTML = '<tr><td colspan="4">No active orders found.</td></tr>';
+                return;
+            }
+
+            orders.forEach(order => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${order.tableNumber || 'N/A'}</td>
+                    <td>${order.items.map(item => `${item.name} x${item.quantity}`).join(', ')}</td>
+                    <td>${new Date(order.orderTime).toLocaleString()}</td>
+                    <td>
+                        <select onchange="updateOrderStatus('${order._id}', this.value)">
+                            <option value="Pending" ${order.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                            <option value="Preparing" ${order.status === 'Preparing' ? 'selected' : ''}>Preparing</option>
+                            <option value="Prepared" ${order.status === 'Prepared' ? 'selected' : ''}>Prepared</option>
+                        </select>
+                    </td>
+                `;
+                ordersList.appendChild(row);
+            });
+
+        } catch (error) {
+            console.error("Error fetching orders:", error);
+        }
+    }
+
+    async function updateOrderStatus(orderId, status) {
+        try {
+            const response = await fetch(`/api/orders/update/${orderId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status })
+            });
+
+            if (response.ok) {
+                console.log(`Order ${orderId} updated to ${status}`);
+                if (status === "Prepared") fetchOrders(); // Refresh list when an order is prepared
+            } else {
+                console.error('Failed to update order status');
+            }
+        } catch (error) {
+            console.error('Error updating order:', error);
+        }
+    }
+
+    // Fetch orders on page load
+    fetchOrders();
+</script>
+
+</body>
+</html>

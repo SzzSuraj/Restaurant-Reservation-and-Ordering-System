@@ -6,6 +6,168 @@
     <title>Contact - Mountain Fusion Bistro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Contact Page */
+        .contact-page .contact-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            padding: 3rem 0;
+        }
+
+        .contact-page .container {
+            text-align: center;
+            display: flex;
+            flex-direction: colunm;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .contact-page .container h2 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-page .contact-description {
+            margin-bottom: 1rem;
+        }
+
+        .contact-page .contact-form-container {
+            width: 70%; 
+            margin: 2rem auto;
+            text-align: left;
+        }
+        
+        .contact-page .contact-form {
+            width: 70%;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+        }
+        
+        .contact-page .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-page .contact-form label {
+            display: block;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-page .contact-form input,
+        .contact-form select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: border-color 0.2s ease;
+        }
+        
+        .contact-page .contact-form input:focus,
+        .contact-form select:focus {
+            border-color: #99540A; /* Dark brown for focus */
+            outline: none;
+        }
+        
+        .contact-page .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            background-color: #f9f9f9;
+            transition: border-color 0.2s ease;
+            resize: none; /* Prevents the textarea from being resizable */
+        }
+        
+        .contact-page .hint {
+            display: none;
+            font-size: 0.8rem;
+            color: #ff0000; /* Red for validation hints */
+            margin-top: 0.25rem;
+        }
+        
+        /* Button Styles */
+        .contact-page .button-container {
+            margin-top: 2rem;
+            text-align: right;
+        }
+        
+        .contact-page .button-container button {
+            width: 33.33%;
+            padding: 0.75rem;
+            background-color: #8aa2a9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-page .button-container button:hover {
+            background-color: #0056b3; /* Lighter brown on hover */
+        }
+        
+        .contact-page .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 9999; /* Ensure it stays on top */
+            left: 0;
+            top: 0;
+            width: 30%;
+            height: 30%;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .contact-page .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+        }
+        
+        .contact-page .modal-content p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: green;
+        }
+        
+        .contact-page .close-btn {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .contact-page .close-btn:hover {
+            background-color: #555;
+        }
+        
+        .contact-page .map-section {
+            margin-left: 3rem;
+            margin-right: 3rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+    </style>
+        
 </head>
 <body class="contact-page">
 
@@ -48,9 +210,9 @@
 
 <!-- Contact Form Section -->
 <section class="contact-section">
-    <div class="container">
-        <h2>Message Us</h2>
+    <h2>Message Us</h2>
         <p class="contact-description">If you have any questions or need to get in touch, please use the form below.</p>
+    <div class="container">
 
         <!-- Contact Form Container -->
         <div class="contact-form-container">
@@ -81,7 +243,7 @@
         <h2>Our Location</h2>
         <div id="map">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6218.95108560677!2d138.60156837555635!3d-34.92304277284155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0ced474e04f45%3A0x4bbcdba5a6fc11e6!2sIIBIT-%20Federation%20University%20Australia%2C%20Adelaide%20Campus!5e1!3m2!1sen!2sau!4v1726821446686!5m2!1sen!2sau" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8275.86295043601!2d138.60136077475414!3d-34.92288790680465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ab0ced474e04f45%3A0x4bbcdba5a6fc11e6!2sIIBIT-%20Federation%20University%20Australia%2C%20Adelaide%20Campus!5e0!3m2!1sen!2sau!4v1738720608289!5m2!1sen!2sau"
             width="100%" 
             height="400" 
             style="border:0;" 

@@ -44,6 +44,10 @@ const reservationRoutes = require('./routes/reservation'); // Reservations
 const reviewRoutes = require('./routes/review');      // Reviews
 const menuRoutes = require('./routes/menu');          // Menu management
 const orderRoutes = require('./routes/order');        // Order management
+const chartRoutes = require('./routes/charts');       // charts on dashboard
+
+
+
 
 // Use Routes
 app.use('/admin', adminRoutes);        // Routes for admin functionalities
@@ -54,6 +58,10 @@ app.use('/reviews', reviewRoutes);    // Routes for customer reviews
 app.use('/menu', menuRoutes);         // Routes for menu management
 app.use('/orders', orderRoutes);      // Routes for order management
 app.use('/api', messageRoutes);       // Routes for messages and announcements
+app.use('/api/orders', orderRoutes);
+app.use('/charts', chartRoutes);      // routes for charts on dashboard
+
+
 
 
 

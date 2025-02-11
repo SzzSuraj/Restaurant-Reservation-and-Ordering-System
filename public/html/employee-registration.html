@@ -7,12 +7,9 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e9d5b8;
-            margin: 0;
-            display: flex;
+            background-color: whitesmoke
+            text-align: center;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
         .registration-container {
             background-color: #ffffff;
@@ -22,11 +19,15 @@
             max-width: 500px;
             width: 100%;
             text-align: center;
+            margin-left: 30rem;
         }
         h1 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: #5a3825;
+            text-align: center;
+            font-size: 2.5rem;
+            color:#2B1A1D;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
         .form-group {
             margin-bottom: 1rem;
@@ -54,7 +55,7 @@
         .button-container {
             margin-top: 1rem;
         }
-        button {
+        .button-container button {
             width: 100%;
             padding: 0.75rem;
             background-color: #5a3825;
@@ -65,7 +66,7 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        button:hover {
+        .button-container button:hover {
             background-color: #744831;
         }
         #resultMessage {
@@ -73,11 +74,57 @@
             font-size: 1rem;
             color: #333;
         }
+
+        header {
+            text-align: center;
+            background-color: #e9d5b8;
+            width: 100%;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; 
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .logo {
+            max-width: 150px; /* Adjust size as needed */
+            height: auto;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #5a3825;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+         }
+
+        .back-btn:hover {
+            background-color: #744831;
+        }
+
     </style>
 </head>
 <body>
+    <header>
+        <div class="header-container">
+            <a href="admin-dashboard.html">
+                <img src="../images/logo.png" alt="Admin Dashboard Logo" class="logo">
+            </a>
+        </div>
+        <button class="back-btn" onclick="window.location.href='admin-dashboard.html'">Back to Dashboard</button>
+    </header>
+    <h1>Register New Employee</h1>
     <div class="registration-container">
-        <h1>Register New Employee</h1>
         <form id="employee-registration-form">
             <div class="form-group">
                 <label for="username">Email Address:</label>

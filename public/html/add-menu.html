@@ -8,22 +8,19 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e9d5b8; /* Light tan background */
+            background-color: white;
             margin: 0;
             padding: 0;
             color: #5a3825; /* Dark brown text */
         }
         
-        header {
-            background: url('../images/bg3.png') no-repeat center center/cover;
-            color: white; 
-            padding: 1rem;
+        h1 {
             text-align: center;
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            color:#2B1A1D;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 700;
         }
         
         main {
@@ -121,13 +118,59 @@
         .delete-section button:hover {
             background-color: #c9302c; /* Slightly darker red */
         }
+
+        header {
+            text-align: center;
+            background-color: #e9d5b8;
+            width: 100%;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; 
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .logo {
+            max-width: 150px; /* Adjust size as needed */
+            height: auto;
+            cursor: pointer;
+        }
+
+        .back-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: #5a3825;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+         }
+
+        .back-btn:hover {
+            background-color: #744831;
+        }
+
     </style>
     
 </head>
 <body>
     <header>
-        <h1>Add Menu Item</h1>
+        <div class="header-container">
+            <a href="admin-dashboard.html">
+                <img src="../images/logo.png" alt="Admin Dashboard Logo" class="logo">
+            </a>
+        </div>
+        <button class="back-btn" onclick="window.location.href='admin-dashboard.html'">Back to Dashboard</button>
     </header>
+
+        <h1>Add Menu Item</h1>
+    
     <main>
         <form id="add-menu-form" enctype="multipart/form-data">
             <label for="name">Item Name:</label>

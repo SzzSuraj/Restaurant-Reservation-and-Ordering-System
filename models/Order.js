@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
-    tableNumber: { type: Number, required: true }, // From the second schema
+    tableNumber: { type: Number, required: false }, // From the second schema
     items: [
         {
             name: { type: String, required: true }, // From the first schema

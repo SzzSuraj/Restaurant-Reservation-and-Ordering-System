@@ -27,4 +27,5 @@ router.get('/get-message', (req, res) => {
     res.json({ message: notificationMessage });
 });
 
+
 module.exports = router;
